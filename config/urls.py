@@ -8,17 +8,17 @@ from django.contrib.auth.forms import AuthenticationForm
 from captcha import fields
 
 
-class LoginForm(AuthenticationForm):
-    captcha = fields.ReCaptchaField()
+# class LoginForm(AuthenticationForm):
+#     captcha = fields.ReCaptchaField()
 
-    def clean(self):
-        captcha = self.cleaned_data.get("captcha")
-        if not captcha:
-            return
-        return super().clean()
+#     def clean(self):
+#         captcha = self.cleaned_data.get("captcha")
+#         if not captcha:
+#             return
+#         return super().clean()
 
 
-admin.site.login_form = LoginForm
+# admin.site.login_form = LoginForm
 admin.site.login_template = "login.html"
 
 
