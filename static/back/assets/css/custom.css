@@ -1,0 +1,14 @@
+
+.post-title {
+    width: 40%;
+}
+
+.custom-drag {
+    display: flex;
+    align-items: center;
+}
+
+.nestable{
+    display: flex;
+    flex-direction: column;
+}

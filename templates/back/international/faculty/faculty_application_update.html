@@ -1,0 +1,295 @@
+{% extends 'back/_base.html' %}
+{% load thumbnail %}
+{% load static i18n %}
+{% block mainbread %}
+    <ul class="nav navbar-nav bookmark-icons">
+        <div class="d-flex main-bread">
+            <h5 class="content-header-title float-left pr-1 mb-0">{% trans 'Xalqaro fakultetlar' %}</h5>
+            <div class="breadcrumb-wrapper">
+                <ol class="breadcrumb p-0 mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index-admin' %}"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a
+                            href="{% url 'international:international-faculty-application-list' %}">{% trans 'Arizalar' %}</a>
+                    </li>
+                    <li class="breadcrumb-item active"><a href="#">{% trans 'Tahrirlash' %}</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </ul>
+{% endblock %}
+
+{% block body %}
+    {% include 'back/parts/menu.html' %}
+    <!-- BEGIN: Content-->
+    <div class="app-content content" id="app">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <!-- app invoice View Page -->
+                <form action="{% url 'international:faculty-application-update' object.id %}"
+                      method="post">{% csrf_token %}
+                    <section class="invoice-edit-wrapper">
+                        <div class="row">
+                            <!-- invoice view page -->
+                            <div class="col-xl-8 col-md-8 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title"
+                                            style="text-transform: inherit;">{% trans 'Ariza' %}</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body pb-1 mx-25">
+                                            <!-- invoice address and contact -->
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'F.I.SH' %}</label>
+                                                        <input type="text"
+                                                               class="form-control" autocomplete="off"
+                                                               placeholder="{% trans 'fish' %}"
+                                                               disabled
+                                                               name="full_name"
+                                                               value="{{ object.full_name|escapejs }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Yo‘nalish' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control" disabled
+                                                               name="address"
+                                                               value="{{ object.category|escapejs }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Telefon' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control"
+                                                               name="sender_contact"
+                                                               disabled
+                                                               value="{{ object.phone_number1 }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Telefon 2' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control"
+                                                               disabled
+                                                               name="sender_contact_2"
+                                                                {% if object.phone_number2 %}
+                                                               value="{{ object.phone_number2 }}"
+                                                                {% endif %}
+                                                        >
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>
+                                                            {% trans "Pasport/ID oldi tarafi" %}
+                                                        </label>
+                                                        {% if object.passport_front %}
+                                                            <p><a href="{{ object.passport_front.url }}"
+                                                                  target="_blank">
+                                                                {{ object.passport_front.name }}
+                                                            </a></p>
+                                                        {% else %}
+                                                            <p>
+                                                                No image
+                                                            </p>
+                                                        {% endif %}
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>
+                                                            {% trans "Pasport/ID orqa tarafi" %}
+                                                        </label>
+                                                        {% if object.passport_back %}
+                                                            <p><a href="{{ object.passport_back.url }}"
+                                                                  target="_blank">
+                                                                {{ object.passport_back.name }}
+                                                            </a></p>
+                                                        {% else %}
+                                                            <p>
+                                                                No image
+                                                            </p>
+                                                        {% endif %}
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>
+                                                            {% trans "Xujjatlar uchun 3x4 rasm" %}
+                                                        </label>
+                                                        {% if object.image_3_4 %}
+                                                            <p><a href="{{ object.image_3_4.url }}"
+                                                                  target="_blank">
+                                                                {{ object.image_3_4.name }}
+                                                            </a></p>
+                                                        {% else %}
+                                                            <p>
+                                                                No image
+                                                            </p>
+                                                        {% endif %}
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Address' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control" disabled
+                                                               name="address"
+                                                               value="{{ object.address|escapejs }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'School number' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control" disabled
+                                                               name="school_number"
+                                                               value="{{ object.school_number|escapejs }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Birth date' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               disabled
+                                                               class="form-control"
+                                                               name="birth_date"
+                                                               value="{{ object.birth_date }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Created at' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               disabled
+                                                               class="form-control"
+                                                               name="created_at"
+                                                               value="{{ object.created_at }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- invoice action  -->
+                            <div class="col-xl-4 col-md-4 col-12">
+                                <div class="card invoice-action-wrapper shadow-none border">
+                                    <div class="card-body">
+                                        <fieldset>
+                                            <div class="custom-control custom-switch custom-control-inline mb-1">
+                                                <input name="is_reviewed"
+                                                       type="checkbox"
+                                                       class="custom-control-input"
+                                                       id="is_reviewed"
+                                                        {% if object.is_reviewed %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="custom-control-label mr-1" for="is_reviewed">
+                                                    <span class="switch-icon-left"><i class="bx bx-check"></i></span>
+                                                    <span class="switch-icon-right"><i class="bx bx-x"></i></span>
+                                                </label>
+                                                <span>
+                                          <label for="is_reviewed">
+                                            {% trans "Ko'rib chiqilgan" %}
+                                          </label></span>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="custom-control custom-switch custom-control-inline mb-1">
+                                                <input name="is_form_invalid"
+                                                       type="checkbox"
+                                                       class="custom-control-input"
+                                                       id="is_form_invalid"
+                                                        {% if object.is_form_invalid %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="custom-control-label mr-1" for="is_form_invalid">
+                                                    <span class="switch-icon-left"><i class="bx bx-check"></i></span>
+                                                    <span class="switch-icon-right"><i class="bx bx-x"></i></span>
+                                                </label>
+                                                <span>
+                                          <label for="is_form_invalid">
+                                            {% trans "Forma xato to'ldirilgan" %}
+                                          </label></span>
+                                            </div>
+                                        </fieldset>
+                                        <div class="invoice-action-btn mb-1">
+                                            <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+                                                <i class="bx bxs-save"></i>
+                                                <span>{% trans 'Yangilash' %}</span>
+                                            </button>
+                                        </div>
+                                        <div class="invoice-action-btn mb-1">
+                                            <div class="save">
+                                                <a href="{% url 'international:faculty-application-delete' object.id %}"
+                                                   class="btn btn-light-danger btn-block">
+                                                    <span class="text-nowrap">{% trans 'O‘chirish' %}</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

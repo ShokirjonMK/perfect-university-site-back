@@ -1,0 +1,1061 @@
+{% extends 'back/_base.html' %}
+{% load static i18n templatetags %}
+{% block mainbread %}
+    <ul class="nav navbar-nav bookmark-icons">
+        <div class="d-flex main-bread">
+            <h5 class="content-header-title float-left pr-1 mb-0">{% trans 'Asosiy' %}</h5>
+            <div class="breadcrumb-wrapper">
+                <ol class="breadcrumb p-0 mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index-admin' %}"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active">{% trans 'Bosh sahifa' %}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </ul>
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue-ctk-date-time-picker.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue2-editor.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/katex.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/monokai-sublime.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.snow.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.imageUploader.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/main-editor.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/ui/prism.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/css/plugins/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond-plugin-image-preview.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/forms/select/select2.min.css' %}">
+{% endblock %}
+
+{% block body %}
+    {% include 'back/parts/menu.html' %}
+    <!-- BEGIN: Content-->
+    <div class="app-content content" id="app">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <!-- app invoice View Page -->
+                <form action="{% url 'settings:general' %}" method="post"
+                      enctype="multipart/form-data">{% csrf_token %}
+                    <section class="invoice-edit-wrapper">
+                        <div class="row">
+                            <!-- invoice view page -->
+                            <div class="col-xl-8 col-md-8 col-12">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="uzbek-tab" data-toggle="pill" href="#uzbek"
+                                           aria-expanded="true"><i class="flag-icon flag-icon-uz mr-50"></i>
+                                            O‘zbekcha</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="russian-tab" data-toggle="pill" href="#russian"
+                                           aria-expanded="false"><i class="flag-icon flag-icon-ru mr-50"></i> Русский
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="english-tab" data-toggle="pill" href="#english"
+                                           aria-expanded="false"><i class="flag-icon flag-icon-gb mr-50"></i> English
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content main-editor">
+                                    <div class="tab-pane active" id="uzbek" role="tabpanel" aria-labelledby="home-tab"
+                                         aria-expanded="false">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title" style="text-transform: inherit;">[UZ] Bosh
+                                                    sarlavha</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Bosh sarlavha' %}"
+                                                                       name="title_uz"
+                                                                       v-model="title_uz">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="card-header">
+                                                <h4 class="card-title" style="text-transform: inherit;">[UZ] Address</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Bosh sarlavha' %}"
+                                                                       name="address_uz"
+                                                                       v-model="address_uz">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="card-header">
+                                                <h4 class="card-title">[UZ](Kirilcha) {% trans 'Banner' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="banner_uz"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.banner_uz %}
+                                                        {{ site.banner_uz.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Rasm' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-header">
+                                                <h4 class="card-title">[UZ](Kirilcha) {% trans 'Logo' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="logo_uz"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.logo_uz %}
+                                                        {{ site.logo_uz.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Rasm' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="card-header">
+                                                <h4 class="card-title">[UZ](Kirilcha) {% trans 'Logo white' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="logo_white_uz"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.logo_white_uz %}
+                                                        {{ site.logo_white_uz.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Logo white' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!-- IT raqamlar main page -->
+                                            <div class="card-header">
+                                                <h4 class="card-title">[UZ] Raqamlar sarlavha</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 1 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 1 Sarlavha' %}"
+                                                                       name="title1_uz"
+                                                                       v-model="title1_uz">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 2 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 2 Sarlavha' %}"
+                                                                       name="title2_uz"
+                                                                       v-model="title2_uz">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 3 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 3 Sarlavha' %}"
+                                                                       name="title3_uz"
+                                                                       v-model="title3_uz">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 4 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 4 Sarlavha' %}"
+                                                                       name="title4_uz"
+                                                                       v-model="title4_uz">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="tab-pane" id="russian" role="tabpanel" aria-labelledby="russian-tab"
+                                         aria-expanded="false">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title" style="text-transform: inherit;">[UZ] Bosh
+                                                    sarlavha</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Bosh sarlavha' %}"
+                                                                       name="title_ru"
+                                                                       v-model="title_ru">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="card-header">
+                                                <h4 class="card-title" style="text-transform: inherit;">[RU] Address</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Bosh sarlavha' %}"
+                                                                       name="address_ru"
+                                                                       v-model="address_ru">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="card-header">
+                                                <h4 class="card-title">[RU] {% trans 'Banner' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="banner_ru"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.banner_ru %}
+                                                        {{ site.banner_ru.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Rasm' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-header">
+                                                <h4 class="card-title">[RU] {% trans 'Logo' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="logo_ru"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.logo_ru %}
+                                                        {{ site.logo_ru.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Rasm' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="card-header">
+                                                <h4 class="card-title">[RU] {% trans 'Logo white' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="logo_white_ru"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.logo_white_ru %}
+                                                        {{ site.logo_white_ru.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Logo white' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!-- IT raqamlar main page -->
+                                            <div class="card-header">
+                                                <h4 class="card-title">[RU] Raqamlar sarlavha</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 1 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 1 Sarlavha' %}"
+                                                                       name="title1_ru"
+                                                                       v-model="title1_ru">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 2 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 2 Sarlavha' %}"
+                                                                       name="title2_ru"
+                                                                       v-model="title2_ru">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 3 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 3 Sarlavha' %}"
+                                                                       name="title3_ru"
+                                                                       v-model="title3_ru">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 4 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 4 Sarlavha' %}"
+                                                                       name="title4_ru"
+                                                                       v-model="title4_ru">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="english" role="tabpanel" aria-labelledby="english-tab"
+                                         aria-expanded="false">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title" style="text-transform: inherit;">[EN] Bosh
+                                                    sarlavha</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Bosh sarlavha' %}"
+                                                                       name="title_en"
+                                                                       v-model="title_en">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="card-header">
+                                                <h4 class="card-title" style="text-transform: inherit;">[EN] Address</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Bosh sarlavha' %}"
+                                                                       name="address_en"
+                                                                       v-model="address_en">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="card-header">
+                                                <h4 class="card-title">[EN] {% trans 'Banner' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="banner_en"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.banner_en %}
+                                                        {{ site.banner_en.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Rasm' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-header">
+                                                <h4 class="card-title">[EN] {% trans 'Logo' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="logo_en"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.logo_en %}
+                                                        {{ site.logo_en.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Rasm' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="card-header">
+                                                <h4 class="card-title">[EN] {% trans 'Logo white' %}</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                 <div class="card-body">
+                                                    <div class="custom-file">
+                                                        <input type="file"
+                                                           id="input_file"
+                                                           class="custom-file-input"
+                                                           accept="image/x-png,image/gif,image/jpeg"
+                                                           name="logo_white_uz"
+                                                           >
+                                                    <label class="custom-file-label" for="input_file">
+                                                        {% if site.logo_white_en %}
+                                                        {{ site.logo_white_en.name|truncatechars:150 }}
+                                                        {% else %}
+                                                        {% trans 'Logo white' %}
+                                                        {% endif %}
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- IT raqamlar main page -->
+                                            <div class="card-header">
+                                                <h4 class="card-title">[EN] Raqamlar sarlavha</h4>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body pb-0 mx-25">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 1 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 1 Sarlavha' %}"
+                                                                       name="title1_en"
+                                                                       v-model="title1_en">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 2 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 2 Sarlavha' %}"
+                                                                       name="title2_en"
+                                                                       v-model="title2_en">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 3 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 3 Sarlavha' %}"
+                                                                       name="title3_en"
+                                                                       v-model="title3_en">
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <label for="basicInput">{% trans 'Number 4 Sarlavha' %}</label>
+
+                                                            <fieldset class="invoice-address form-group">
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       placeholder="{% trans 'Number 4 Sarlavha' %}"
+                                                                       name="title4_en"
+                                                                       v-model="title4_en">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body mx-25">
+                                            <!-- invoice address and contact -->
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Banner link' %}</label>
+                                                        <input type="url" class="form-control"
+                                                               v-model="banner_link"
+                                                               name="banner_link"
+                                                               placeholder="{% trans 'Banner linki' %}">
+                                                    </fieldset>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body mx-25">
+                                            <!-- invoice address and contact -->
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Ishonch telefoni' %}</label>
+                                                        <input type="text" class="form-control"
+                                                               v-model="phone_number"
+                                                               name="phone_number"
+                                                               placeholder="{% trans 'Telefon raqamni kiriting' %}">
+                                                    </fieldset>
+                                                  <fieldset class="invoice-address form-group">
+                                                   <label for="basicInput">{% trans 'Email' %}</label>
+                                                       <input type="email" class="form-control"
+                                                               v-model="email"
+                                                               name="email"
+                                                               placeholder="{% trans 'Email' %}">                                                 </fieldset>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body mx-25">
+                                            <!-- invoice address and contact -->
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Instagram' %}</label>
+                                                        <input type="url" class="form-control"
+                                                               v-model="instagram"
+                                                               name="instagram"
+                                                               placeholder="{% trans 'Instagram' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Telegram' %}</label>
+                                                        <input type="url" class="form-control"
+                                                               v-model="telegram"
+                                                               name="telegram"
+                                                               placeholder="{% trans 'Telegram' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Facebook' %}</label>
+                                                        <input type="url" class="form-control"
+                                                               v-model="facebook"
+                                                               name="facebook"
+                                                               placeholder="{% trans 'Facebook' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Twitter' %}</label>
+                                                        <input type="url" class="form-control"
+                                                               v-model="twitter"
+                                                               name="twitter"
+                                                               placeholder="{% trans 'Twitter' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Youtube' %}</label>
+                                                        <input type="url" class="form-control"
+                                                               v-model="youtube"
+                                                               name="youtube"
+                                                               placeholder="{% trans 'Youtube' %}">
+                                                    </fieldset>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- invoice action  -->
+                            <div class="col-xl-4 col-md-4 col-12 pt-4">
+                                <div class="card invoice-action-wrapper shadow-none border">
+                                    <div class="card-body">
+                                        <div class="invoice-action-btn mb-1">
+                                            <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+                                                <i class="bx bxs-save"></i>
+                                                <span>{% trans 'Yangilash' %}</span>
+                                            </button>
+                                        </div>
+                                        <div class="invoice-action-btn mb-1">
+                                            <div class="save">
+                                                <a href="{% url 'index-admin' %}"
+                                                   class="btn btn-light-danger btn-block">
+                                                    <span class="text-nowrap">{% trans 'O‘chirish' %}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+
+
+
+                                    <div class="card-header">
+                                        <h4 class="card-title">[Lotincha] {% trans 'Banner' %}</h4>
+                                    </div>
+                                    <div class="card-content">
+                                         <div class="card-body">
+                                            <div class="custom-file">
+                                                <input type="file"
+                                                   id="input_file"
+                                                   class="custom-file-input"
+                                                   accept="image/x-png,image/gif,image/jpeg"
+                                                   name="banner_sr"
+                                                   >
+                                            <label class="custom-file-label" for="input_file">
+                                                {% if site.banner_sr %}
+                                                {{ site.banner_sr.name|truncatechars:150 }}
+                                                {% else %}
+                                                {% trans 'Rasm' %}
+                                                {% endif %}
+                                            </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card-header">
+                                        <h4 class="card-title">[Lotincha] {% trans 'Logo' %}</h4>
+                                    </div>
+                                    <div class="card-content">
+                                         <div class="card-body">
+                                            <div class="custom-file">
+                                                <input type="file"
+                                                   id="input_file"
+                                                   class="custom-file-input"
+                                                   accept="image/x-png,image/gif,image/jpeg"
+                                                   name="logo_sr"
+                                                   >
+                                            <label class="custom-file-label" for="input_file">
+                                                {% if site.logo_sr %}
+                                                {{ site.logo_sr.name|truncatechars:150 }}
+                                                {% else %}
+                                                {% trans 'Rasm' %}
+                                                {% endif %}
+                                            </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="card-header">
+                                        <h4 class="card-title">[Lotincha] {% trans 'Logo white' %}</h4>
+                                    </div>
+                                    <div class="card-content">
+                                         <div class="card-body">
+                                            <div class="custom-file">
+                                                <input type="file"
+                                                   id="input_file"
+                                                   class="custom-file-input"
+                                                   accept="image/x-png,image/gif,image/jpeg"
+                                                   name="logo_white_sr"
+                                                   >
+                                            <label class="custom-file-label" for="input_file">
+                                                {% if site.logo_white_sr %}
+                                                {{ site.logo_white_sr.name|truncatechars:150 }}
+                                                {% else %}
+                                                {% trans 'Logo white' %}
+                                                {% endif %}
+                                            </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body mx-25">
+                                            <!-- invoice address and contact -->
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Number 1' %}</label>
+                                                        <input type="number" class="form-control"
+                                                               v-model="number1"
+                                                               name="number1"
+                                                               placeholder="{% trans 'Number 1' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Number 2' %}</label>
+                                                        <input type="number" class="form-control"
+                                                               v-model="number2"
+                                                               name="number2"
+                                                               placeholder="{% trans 'Number 2' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Number 3' %}</label>
+                                                        <input type="number" class="form-control"
+                                                               v-model="number3"
+                                                               name="number3"
+                                                               placeholder="{% trans 'Number 3' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Number 4' %}</label>
+                                                        <input type="number" class="form-control"
+                                                               v-model="number4"
+                                                               name="number4"
+                                                               placeholder="{% trans 'Number 4' %}">
+                                                    </fieldset>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body mx-25">
+                                            <!-- invoice address and contact -->
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Dushanba - Juma' %}</label>
+                                                        <input type="text" class="form-control"
+                                                               v-model="work_schedule_mon_fri"
+                                                               name="work_schedule_mon_fri"
+                                                               placeholder="{% trans '8:00 - 18:00' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Shanba' %}</label>
+                                                        <input type="text" class="form-control"
+                                                               v-model="work_schedule_sun"
+                                                               name="work_schedule_sun"
+                                                               placeholder="{% trans '8:00 - 16:00' %}">
+                                                    </fieldset>
+                                                    <fieldset class="invoice-address form-group">
+                                                        <label for="basicInput">{% trans 'Tushlik' %}</label>
+                                                        <input type="text" class="form-control"
+                                                               v-model="work_schedule_lunch"
+                                                               name="work_schedule_lunch"
+                                                               placeholder="{% trans '14:00' %}">
+                                                    </fieldset>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'back/app-assets/vendors/js/filepond-plugin-image-preview.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/filepond.js' %}"></script>
+    <script src="{% static 'back/app-assets/js/vue.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/vue-ctk-date-time-picker.umd.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/katex.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/highlight.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/quill.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/quill.imageUploader.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/vue-filepond.min.js' %}"></script>
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/js/scripts/forms/select/form-select2.min.js' %}"></script>
+
+    <script type="text/javascript">
+        Vue.component('vue-ctk-date-time-picker', window['vue-ctk-date-time-picker']);
+
+        var app = new Vue({
+            el: '#app',
+            components: {
+                FilePond: vueFilePond.default(FilePondPluginImagePreview)
+            },
+            data: {
+                title_uz: '{{ site.title_uz|escapejs }}',
+                title_ru: '{{ site.title_ru|escapejs }}',
+                title_en: '{{ site.title_en|escapejs }}',
+                address_uz: '{{ site.address_uz|escapejs }}',
+                address_ru: '{{ site.address_ru|escapejs }}',
+                address_en: '{{ site.address_en|escapejs }}',
+
+
+                phone_number: '{{ site.phone_number|escapejs }}',
+                email: '{{ site.email|escapejs }}',
+
+                banner_link: '{{ site.banner_link|escapejs }}',
+
+                instagram: '{{ site.instagram|escapejs }}',
+                telegram: '{{ site.telegram|escapejs }}',
+                facebook: '{{ site.facebook|escapejs }}',
+                twitter: '{{ site.twitter|escapejs }}',
+                youtube: '{{ site.youtube|escapejs }}',
+                number1: '{{ site.number1|escapejs }}',
+                number2: '{{ site.number2|escapejs }}',
+                number3: '{{ site.number3|escapejs }}',
+                number4: '{{ site.number4|escapejs }}',
+
+                title1_uz: '{{ site.title1_uz|escapejs }}',
+                title2_uz: '{{ site.title2_uz|escapejs }}',
+                title3_uz: '{{ site.title3_uz|escapejs }}',
+                title4_uz: '{{ site.title4_uz|escapejs }}',
+
+                title1_ru: '{{ site.title1_ru|escapejs }}',
+                title2_ru: '{{ site.title2_ru|escapejs }}',
+                title3_ru: '{{ site.title3_ru|escapejs }}',
+                title4_ru: '{{ site.title4_ru|escapejs }}',
+
+                title1_en: '{{ site.title1_en|escapejs }}',
+                title2_en: '{{ site.title2_en|escapejs }}',
+                title3_en: '{{ site.title3_en|escapejs }}',
+                title4_en: '{{ site.title4_en|escapejs }}',
+
+
+
+
+                work_schedule_mon_fri: '{{ site.work_schedule_mon_fri|escapejs }}',
+                work_schedule_sun: '{{ site.work_schedule_sun|escapejs }}',
+                work_schedule_lunch: '{{ site.work_schedule_lunch|escapejs }}',
+
+            },
+            methods: {
+                handleFilePondInit: function () {
+                    console.log('FilePond has initialized');
+
+                    // example of instance method call on pond reference
+                    this.$refs.pond.getFiles();
+                }
+            },
+        });
+        Quill.register("modules/imageUploader", ImageUploader);
+        var quill = new Quill('#editor-container', {
+            modules: {
+                formula: true,
+                syntax: true,
+                toolbar: '#toolbar-container',
+                imageUploader: {
+                    upload: file => {
+                        return new Promise((resolve, reject) => {
+                            const formData = new FormData();
+                            formData.append("image", file);
+
+                            fetch(
+                                "https://api.imgbb.com/1/upload?key=d36eb6591370ae7f9089d85875e56b22",
+                                {
+                                    method: "POST",
+                                    body: formData
+                                }
+                            )
+                                .then(response => response.json())
+                                .then(result => {
+                                    console.log(result);
+                                    resolve(result.data.url);
+                                })
+                                .catch(error => {
+                                    reject("Yuklashda xatolik");
+                                    console.error("Xato:", error);
+                                });
+                        });
+                    }
+                }
+            },
+
+            placeholder: 'Maqola haqida batafsil...',
+            theme: 'snow'
+        });
+        var quill = new Quill('#russian-editor', {
+            modules: {
+                formula: true,
+                syntax: true,
+                toolbar: '#toolbar-russian-container',
+                imageUploader: {
+                    upload: file => {
+                        return new Promise((resolve, reject) => {
+                            const formData = new FormData();
+                            formData.append("image", file);
+
+                            fetch(
+                                "https://api.imgbb.com/1/upload?key=d36eb6591370ae7f9089d85875e56b22",
+                                {
+                                    method: "POST",
+                                    body: formData
+                                }
+                            )
+                                .then(response => response.json())
+                                .then(result => {
+                                    console.log(result);
+                                    resolve(result.data.url);
+                                })
+                                .catch(error => {
+                                    reject("Ошибка при загрузке");
+                                    console.error("Ошибка:", error);
+                                });
+                        });
+                    }
+                }
+            },
+
+            placeholder: 'Подробно...',
+            theme: 'snow'
+        });
+        var quill = new Quill('#english-editor', {
+            modules: {
+                formula: true,
+                syntax: true,
+                toolbar: '#toolbar-english-container',
+                imageUploader: {
+                    upload: file => {
+                        return new Promise((resolve, reject) => {
+                            const formData = new FormData();
+                            formData.append("image", file);
+
+                            fetch(
+                                "https://api.imgbb.com/1/upload?key=d36eb6591370ae7f9089d85875e56b22",
+                                {
+                                    method: "POST",
+                                    body: formData
+                                }
+                            )
+                                .then(response => response.json())
+                                .then(result => {
+                                    console.log(result);
+                                    resolve(result.data.url);
+                                })
+                                .catch(error => {
+                                    reject("Upload failed");
+                                    console.error("Error:", error);
+                                });
+                        });
+                    }
+                }
+            },
+
+            placeholder: 'More about this post...',
+            theme: 'snow'
+        });
+    </script>
+
+{% endblock %}

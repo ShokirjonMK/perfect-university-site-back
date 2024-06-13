@@ -1,0 +1,751 @@
+{% load static i18n %}
+{% load permission_tags %}
+
+
+<!-- BEGIN: Main Menu-->
+<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow"
+     data-scroll-to-active="true">
+
+    <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+            <li class="nav-item mr-auto"><a class="navbar-brand"
+                                            href="{% url 'index-admin' %}">
+                <div class="brand-logo">
+                    <img class="logo"
+                         src="{% static 'back/app-assets/images/logo/wavecms-w.svg' %}"/>
+                </div>
+            </a></li>
+        </ul>
+    </div>
+    <div class="shadow-bottom"></div>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation"
+            data-menu="menu-navigation"
+            data-icon-style="lines">
+
+            <li class=" navigation-header"><span>{% trans 'Asosiy' %}</span>
+            </li>
+
+            <li class=" nav-item about_agency goal structure staff department">
+                <a href="#"><i class="menu-livicon"
+                               data-icon="building"></i><span
+                        class="menu-title">{% trans 'Universitet' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'about:about-update' %}"><i
+                            class="bx bx-add-to-queue"></i><span
+                            class="menu-item">{% trans 'Universitet haqida' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:announcement-update' %}"><i
+                            class="bx bx-add-to-queue"></i><span
+                            class="menu-item">{% trans "E'lon" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:our-mission-list' %}"><i
+                            class="bx bx-add-to-queue"></i><span
+                            class="menu-item">{% trans "Bizning Missiya" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:our-mission-item-list' %}"><i
+                            class="bx bx-bullseye"></i><span
+                            class="menu-item">{% trans "Bizning Missiya Bo`limlari" %}</span></a>
+                    </li>
+
+
+                    <li><a href="{% url 'about:history-list' %}"><i
+                            class="bx bx-add-to-queue"></i><span
+                            class="menu-item">{% trans "Bizning Tarixlar" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:history-item-list' %}"><i
+                            class="bx bx-bullseye"></i><span
+                            class="menu-item">{% trans "Bizning Tarixlar Bo`limlari" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:history-year-list' %}"><i
+                            class="bx bx-bullseye"></i><span
+                            class="menu-item">{% trans "Bizning Tarixlar Yillari" %}</span></a>
+                    </li>
+
+
+                    <li><a href="{% url 'about:staff-list' %}"><i
+                            class="bx bxs-group"></i><span
+                            class="menu-item">{% trans 'Xodimlar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:famous-graduate-list' %}"><i
+                            class="bx bxs-group"></i><span
+                            class="menu-item">{% trans "Mashhur bitiruvchilar" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:rector-update' %}"><i
+                            class="bx bxs-user"></i><span
+                            class="menu-item">{% trans "Rektor tabrigi" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:application' %}"><i
+                            class="bx bxs-user"></i><span
+                            class="menu-item">{% trans "Rektorga murojaatlar" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:ustav-list' %}"><i
+                            class="bx bxs-user"></i><span
+                            class="menu-item">{% trans "Ustav" %}</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class="staff department"><a href="#"><i class="menu-livicon"
+                                                        data-icon="diagram"></i><span
+                    class="menu-item">{% trans 'Tuzilma' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'about:department-list' %}"><i
+                            class="bx bxs-categories"></i><span
+                            class="menu-item">{% trans "Fakultetlar" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:kafedra-list' %}"><i
+                            class="bx bxs-categories"></i><span
+                            class="menu-item">{% trans "Kafedralar" %}</span></a>
+                    </li>
+
+                    <li><a href="{% url 'about:organization-list' %}"><i
+                            class="bx bx-sitemap"></i><span
+                            class="menu-item">{% trans 'Markazlar va bo‘limlar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:council-staff-list' %}"><i
+                            class="bx bxs-group"></i><span
+                            class="menu-item">{% trans 'Ilmiy kengash' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:council-list' %}"><i
+                            class="bx bxs-group"></i><span
+                            class="menu-item">{% trans 'Kengashlar' %}</span></a>
+                    </li>
+
+                    <li><a href="{% url 'about:sirtqi-update' %}"><i
+                            class="bx bxs-bulb"></i><span
+                            class="menu-item">{% trans 'Sirtqi bo‘lim' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'about:program-list' %}"><i
+                            class="bx bxs-plus-square"></i><span
+                            class="menu-item">{% trans 'Qo‘shma ta’lim dasturlari' %}</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class=" nav-item news"><a href="#"><i class="menu-livicon"
+                                                      data-icon="info-alt"></i><span
+                    class="menu-title">{% trans 'Interaktiv xizmatlar' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'service:service-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Barcha xizmatlar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'service:service-create' %}"><i
+                            class="bx bx-plus"></i><span
+                            class="menu-item">{% trans 'Yangi qo‘shish' %}</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item news"><a href="#"><i class="menu-livicon"
+                                                      data-icon="notebook"></i><span
+                    class="menu-title">{% trans 'Huquqiy hujjatlar' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'docs:docs-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Me’yoriy hujjatlar' %}</span></a>
+                    </li>
+
+                    <!--                    <li><a href="{% url 'docs:docs-create' %}"><i class="bx bx-plus"></i><span class="menu-item">{% trans 'Yangi qo‘shish' %}</span></a>-->
+                    <!--                    </li>-->
+                    <li><a href="{% url 'report:report-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Moliyaviy hisobotlar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'docs:lawyer-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Yurist sahifasi' %}</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+            <li class=" nav-item news"><a href="#"><i class="menu-livicon"
+                                                      data-icon="morph-folder"></i><span
+                    class="menu-title">{% trans 'Matbuot xizmati' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'news:news-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Yangiliklar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'news:news-create' %}"><i
+                            class="bx bx-plus"></i><span
+                            class="menu-item">{% trans 'Yangilik qo‘shish' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'news:hashtag-list' %}"><i
+                            class="bx bx-hash"></i><span
+                            class="menu-item">{% trans 'Heshteglar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'news:category-list' %}"><i
+                            class="bx bx-archive"></i><span
+                            class="menu-item">{% trans 'Bo`limlar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'news:objective-list' %}"><i
+                            class="bx bx-archive"></i><span
+                            class="menu-item">{% trans 'Maqsadlar' %}</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li class=" nav-item news"><a href="#"><i class="menu-livicon"
+                                                      data-icon="image"></i><span
+                    class="menu-title">{% trans 'Media' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'gallery:photo-list' %}"><i
+                            class="bx bx-images"></i><span
+                            class="menu-item">{% trans 'Fotogalareya' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'gallery:video-list' %}"><i
+                            class="bx bx-film"></i><span
+                            class="menu-item">{% trans 'Videogalareya' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'gallery:vebinar-list' %}"><i
+                            class="bx bx-film"></i><span
+                            class="menu-item">{% trans 'Vebinar' %}</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class=" nav-item news"><a href="#"><i class="menu-livicon"
+                                                      data-icon="calendar"></i><span
+                    class="menu-title">{% trans 'Tadbirlar' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'event:event-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Barcha tadbirlar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'event:event-create' %}"><i
+                            class="bx bx-plus"></i><span
+                            class="menu-item">{% trans 'Yangi qo‘shish' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'event:hashtag-list' %}"><i
+                            class="bx bx-hash"></i><span
+                            class="menu-item">{% trans 'Heshteglar' %}</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="has-sub science"><a href="#"><i class="menu-livicon" data-icon="notebook"></i><span
+                    class="menu-title">{% trans 'Ilm-Fan' %}</span></a>
+                <ul class="menu-content">
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Ilmiy yangiliklar' %}</span></a>
+                        <ul class="menu-content">
+                            <li><a href="{% url 'science:news-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Yangiliklar' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'science:news-create' %}"><i
+                                    class="bx bx-plus"></i><span
+                                    class="menu-item">{% trans 'Yangilik qo‘shish' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'science:hashtag-list' %}"><i
+                                    class="bx bx-hash"></i><span
+                                    class="menu-item">{% trans 'Heshteglar' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'science:category-list' %}"><i
+                                    class="bx bx-archive"></i><span
+                                    class="menu-item">{% trans 'Bo`limlar' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'science:news-file-list' %}"><i
+                                        class="bx bx-file"></i><span
+                                        class="menu-item">{% trans 'Fayllar' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Ilmiy markazlar' %}</span></a>
+                        <ul class="menu-content">
+                            <li><a href="{% url 'science:science-center-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Markazlar' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'science:science-center-create' %}"><i
+                                    class="bx bx-plus"></i><span
+                                    class="menu-item">{% trans 'Markaz qo‘shish' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item news"><a href="{% url 'scientific:scientific_journal-list' %}"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Ilmiy jurnallar' %}</span></a>
+                    </li>
+
+                    <li class="nav-item news"><a href="{% url 'scientific:scientific-list' %}"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Ilmiy jurnallar tavsifi' %}</span></a>
+                    </li>
+
+
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Seminarlar' %}</span></a>
+                        <ul class="menu-content">
+                            <li><a href="{% url 'science:seminar-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Seminarlar' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'science:seminar-create' %}"><i
+                                    class="bx bx-plus"></i><span
+                                    class="menu-item">{% trans 'Seminar qo‘shish' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'science:seminar-hashtag-list' %}"><i
+                                        class="bx bx-hash"></i><span
+                                        class="menu-item">{% trans 'Heshteglar' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'science:seminar-category-list' %}"><i
+                                        class="bx bx-archive"></i><span
+                                        class="menu-item">{% trans 'Bo`limlar' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Maqolalar' %}</span></a>
+                        <ul class="menu-content">
+                            <li><a href="{% url 'science:article-list' %}"><i
+                                    class="bx bx-archive"></i><span
+                                    class="menu-item">{% trans 'Maqolalar' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'science:mono-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Monografiyalar' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'science:section-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Maqola va ishlanmalar' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Konferensiyalar' %}</span></a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{% url 'science:conference-subject-list' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Konferensiyalar' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'science:conference-subject-create' %}"><i
+                                        class="bx bx-plus"></i><span
+                                        class="menu-item">{% trans 'Konferensiya qo‘shish' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'science:conference-list' %}"><i
+                                        class="bx bx-archive"></i><span
+                                        class="menu-item">{% trans "Bo'limlar" %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Kutilayotgan konferensiyalar' %}</span></a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{% url 'science:pending-conference-list' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Konferensiyalar' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'science:pending-conference-create' %}"><i
+                                        class="bx bx-plus"></i><span
+                                        class="menu-item">{% trans 'Konferensiya qo‘shish' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'science:conference-tags-list' %}"><i
+                                        class="bx bx-hash"></i><span
+                                        class="menu-item">{% trans 'Heshteglar' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'science:conference-application-list' %}"><i
+                                        class="bx bx-archive"></i><span
+                                        class="menu-item">{% trans "Kelib tushgan arizalar" %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class="staff department"><a href="#"><i class="menu-livicon"
+                                                        data-icon="diagram"></i><span
+                    class="menu-item">{% trans 'Ta’lim' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'course:course-list' %}"><i
+                            class="bx bxs-categories"></i><span
+                            class="menu-item">{% trans "Ta’lim turlari" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'course:direction-list' %}"><i
+                            class="bx bxs-categories"></i><span
+                            class="menu-item">{% trans "Yo'nalishlar" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'course:external-list' %}"><i
+                            class="bx bxs-categories"></i><span
+                            class="menu-item">{% trans "Sirtqi bo'lim" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'course:rating-system-list' %}"><i
+                            class="bx bxs-categories"></i><span
+                            class="menu-item">{% trans "Reyting baholash tizimlari" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'course:qualification-requirements-list' %}"><i
+                            class="bx bxs-categories"></i><span
+                            class="menu-item">{% trans "Malaka talablari" %}</span></a>
+                    </li>
+                    <li><a href="{% url 'course:curriculum-list' %}"><i
+                            class="bx bxs-categories"></i><span
+                            class="menu-item">{% trans "O'quv rejalari" %}</span></a>
+                    </li>
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Abituriyentlarga' %}</span></a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{% url 'course:admission-page-list' %}"><i
+                                        class="bx bx-archive"></i><span
+                                        class="menu-item">{% trans 'Sahifalar' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'course:admission-file-list' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Sahifa Fayllari' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'course:admission-question-list' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Sahifa Savollari' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li class="has-sub nav-item news"><a href="#"><i
+                    class="menu-livicon" data-icon="notebook"></i><span
+                    class="menu-title">{% trans 'Xalqaro' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'international:grant-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Xalqaro grantlar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'international:ranking-update' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Xalqaro baxolash' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'international:conference-list' %}"><i
+                                class="bx bx-list-ul"></i><span
+                                class="menu-item">{% trans 'Xalqaro konferensiyalar' %}</span></a>
+                    </li>
+
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Xalqaro xamkorliklar' %}</span></a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{% url 'international:international-cooperation-list' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Xamkorlar' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'international:international-category-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Bo`limlar' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Xalqaro ilmiy aloqalar' %}</span></a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{% url 'international:relation-list' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Xalqaro ilmiy aloqalar' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'international:staff-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Xorijiy o‘qituvchilar' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'international:link-list' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Foydali havolalar' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Xorijiy stipendiyalar' %}</span></a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{% url 'international:partner-update' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Stipendiyalar' %}</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'international:news-file-list' %}"><i
+                                        class="bx bx-list-ul"></i><span
+                                        class="menu-item">{% trans 'Hamkorlar' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Xalqaro talabalar' %}</span></a>
+                        <ul class="menu-content">
+                            <li><a href="{% url 'admission:admission-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Arizalar' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- international faculty -->
+                    <li class="nav-item news"><a href="#"><i
+                            class="bx bx-right-arrow-alt"></i><span
+                            class="menu-title">{% trans 'Xalqaro fakultetlar' %}</span></a>
+                        <ul class="menu-content">
+                            <li><a href="{% url 'international:international-faculty' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Statik sahifa' %}</span></a>
+                            </li>
+                            <li><a href="{% url 'international:international-faculty-application-list' %}"><i
+                                    class="bx bx-list-ul"></i><span
+                                    class="menu-item">{% trans 'Arizalar' %}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- international faculty end -->
+
+
+                </ul>
+            </li>
+            <li class="nav-item news"><a href="#"><i class="menu-livicon"
+                                                     data-icon="notebook"></i><span
+                    class="menu-title">{% trans "Ochiq ma'lumotlar" %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'opendata:opendata-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans "Barcha ochiq ma'lumotlar" %}</span></a>
+                    </li>
+
+                    <li><a href="{% url 'opendata:opendata-create' %}"><i
+                            class="bx bx-plus"></i><span
+                            class="menu-item">{% trans "Yangi ochiq ma'lumot" %}</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+            <!--            <li class=" nav-item news"><a href="#"><i class="menu-livicon" data-icon="check-alt"></i><span-->
+            <!--                    class="menu-title">{% trans "Iqtiboslar" %}</span></a>-->
+            <!--                <ul class="menu-content">-->
+            <!--                    <li><a href="{% url 'news:faq-list' %}"><i class="bx bx-list-ul"></i><span class="menu-item">{% trans "Barcha iqtiboslar" %}</span></a>-->
+            <!--                    </li>-->
+
+            <!--                    <li><a href="{% url 'news:faq-create' %}"><i class="bx bx-plus"></i><span class="menu-item">{% trans 'Yangi iqtibos' %}</span></a>-->
+            <!--                    </li>-->
+
+
+            <!--                </ul>-->
+            <!--            </li>-->
+
+            <!--            <li class=" nav-item news"><a href="#"><i class="menu-livicon" data-icon="comment"></i><span-->
+            <!--                    class="menu-title">{% trans "So'rovnomalar" %}</span></a>-->
+            <!--                <ul class="menu-content">-->
+            <!--                    <li><a href="{% url 'quizz:quizz-list' %}"><i class="bx bx-list-ul"></i><span class="menu-item">{% trans "Barcha so'rovnoma" %}</span></a>-->
+            <!--                    </li>-->
+            <!--                    <li><a href="{% url 'quizz:quizz-create' %}"><i class="bx bx-plus"></i><span class="menu-item">{% trans 'Yangi qo‘shish' %}</span></a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </li>-->
+
+
+            <li class=" nav-item news"><a href="#"><i class="menu-livicon"
+                                                      data-icon="link"></i><span
+                    class="menu-title">{% trans 'Hamkorlar' %}</span></a>
+                <ul class="menu-content">
+                    <li><a href="{% url 'link:link-list' %}"><i
+                            class="bx bx-list-ul"></i><span
+                            class="menu-item">{% trans 'Barcha hamkorlar' %}</span></a>
+                    </li>
+                    <li><a href="{% url 'link:link-create' %}"><i
+                            class="bx bx-plus"></i><span
+                            class="menu-item">{% trans 'Yangi qo‘shish' %}</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {% if request.user|has_role:'admin' %}
+                <li class=" navigation-header">
+                    <span>{% trans 'Sozlamalar' %}</span>
+                </li>
+                <li class=" nav-item main_page_settings footer_link contact_settings menu static_page">
+                    <a href="#"><i class="menu-livicon" data-icon="gear">
+                    </i><span class="menu-title">{% trans 'Asosiy' %}</span>
+                    </a>
+                    <ul class="menu-content">
+
+                        <li><a href="{% url 'settings:general' %}"><i
+                                class="bx bx-home-circle"></i><span
+                                class="menu-item">{% trans 'Bosh sahifa' %}</span></a>
+                        </li>
+                        <li><a href="{% url 'settings:top-link-list' %}"><i
+                                class="bx bx-link"></i><span
+                                class="menu-item">{% trans 'Top linklar' %}</span></a>
+                        </li>
+                        <li><a href="{% url 'about:statistic-update' %}"><i
+                                class="bx bx-bar-chart"></i><span
+                                class="menu-item">{% trans 'Statistika' %}</span></a>
+                        </li>
+                        <li><a href="{% url 'about:foreign-student-update' %}"><i
+                                class="bx bx-bar-chart"></i><span
+                                class="menu-item">{% trans 'Chet-el Oquvchilar' %}</span></a>
+                        </li>
+
+                        <li><a href="{% url 'about:statisticitem-list' %}"><i
+                                class="bx bx-bullseye"></i><span
+                                class="menu-item">{% trans "Statistika bo'limlari" %}</span></a>
+                        </li>
+
+                        <li><a href="{% url 'about:statistic_content_item-list' %}">
+                            <i class="bx bx-bullseye"></i><span
+                                class="menu-item">{% trans "Statistika kontent bo`limlari" %}</span>
+                        </a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="{% url 'settings:slider-list' %}"><i
+                                    class="bx bx-user"></i>
+                                <span class="menu-item">{% trans 'Slider' %}</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'settings:sidebar-list' %}"><i
+                                    class="bx bx-user"></i>
+                                <span class="menu-item">{% trans 'Sidebar' %}</span></a>
+                        </li>
+                        <li><a href="{% url 'user:user-list' %}"><i
+                                class="bx bx-user"></i>
+                            <span class="menu-item">{% trans 'Foydalanuvchilar' %}</span></a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class=" nav-item region"><a href="#"><i
+                        class="menu-livicon"
+                        data-icon="thumbnails-big"></i><span
+                        class="menu-title">{% trans 'Vebsayt' %}</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{% url 'menu:menu-create' %}"><i
+                                class="bx bx-list-ul"></i><span
+                                class="menu-item">{% trans 'Sayt menyulari' %}</span></a>
+                        </li>
+                        <li><a href="{% url 'static:static-list' %}"><i
+                                class="bx bx-file"></i><span
+                                class="menu-item">{% trans 'Sahifalar' %}</span></a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class=" navigation-header">
+                    <span>{% trans 'Saytdagi xatolar' %}</span>
+                </li>
+                <li class=" nav-item"><a href="{% url 'typo:typo-list' %}"><i
+                        class="menu-livicon"
+                        data-icon="pen"></i><span
+                        class="menu-title">{% trans 'Barcha qayd etilganlar' %}</span></a>
+                </li>
+                <li class=" navigation-header">
+                    <span>{% trans 'Murojaatlar' %}</span>
+                </li>
+
+                <li class=" nav-item"><a href="{% url 'contact:contact-list' %}"><i
+                        class="menu-livicon" data-icon="envelope-pull"></i><span
+                        class="menu-title">{% trans 'Barcha murojaatlar' %}</span></a>
+                </li>
+
+
+
+                {#                hr#}
+                {#                <li class=" navigation-header">#}
+                {#                    <span>{% trans 'HR' %}</span>#}
+                {#                </li>#}
+                {##}
+                {#                <li class=" nav-item news"><a href="#"><i class="menu-livicon"#}
+                {#                                                          data-icon="users"></i><span#}
+                {#                        class="menu-title">{% trans "Bo'sh ish o'rinlari" %}</span></a>#}
+                {#                    <ul class="menu-content">#}
+                {#                        <li><a href="{% url 'vacancy:jobs-list' %}"><i#}
+                {#                                class="bx bx-list-ul"></i>#}
+                {#                            <span#}
+                {#                                    class="menu-item">{% trans "Barcha ish o'rinlar" %}</span></a>#}
+                {#                        </li>#}
+                {#                        <li><a href="{% url 'vacancy:jobs-create' %}"><i#}
+                {#                                class="bx bx-plus"></i><span#}
+                {#                                class="menu-item">{% trans "Yangi ish o\'rinlar" %}</span></a>#}
+                {#                        </li>#}
+                {##}
+                {#                    </ul>#}
+                {##}
+                {#                <li><a href="{% url 'vacancy:vacant-list' %}"><i class="menu-livicon"#}
+                {#                                                                 data-icon="envelope-pull"></i><span#}
+                {#                        class="menu-item">{% trans "Arizalar" %}</span></a>#}
+                {#                </li>#}
+                {#                <li class="nav-item news"><a href="#"><i class="menu-livicon"#}
+                {#                                                         data-icon="list"></i><span#}
+                {#                        class="menu-title">{% trans 'Formalar' %}</span></a>#}
+                {#                    <ul class="menu-content">#}
+                {#                        <li><a href="{% url 'vacancy:form-list' %}"><i#}
+                {#                                class="bx bx-archive"></i><span#}
+                {#                                class="menu-item">{% trans 'Barchasi' %}</span></a>#}
+                {#                        </li>#}
+                {#                        <li><a href="{% url 'vacancy:form-create' %}"><i#}
+                {#                                class="bx bx-plus"></i><span#}
+                {#                                class="menu-item">{% trans "Yangi qo'shish" %}</span></a>#}
+                {#                        </li>#}
+                {#                        <li><a href="{% url 'vacancy:position-list' %}"><i#}
+                {#                                class="bx bx-list-ul"></i><span#}
+                {#                                class="menu-item">{% trans 'Lavozimlar' %}</span></a>#}
+                {#                        </li>#}
+                {#                    </ul>#}
+                {#                </li>#}
+                {#                </li>#}
+
+
+
+            {% endif %}
+
+
+        </ul>
+    </div>
+</div>

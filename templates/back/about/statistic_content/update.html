@@ -1,0 +1,307 @@
+{% extends 'back/_base.html' %} {% load static i18n %} {% block mainbread %}
+<ul class="nav navbar-nav bookmark-icons">
+  <div class="d-flex main-bread">
+    <h5 class="content-header-title float-left pr-1 mb-0">
+      {% trans "Statistika" %}
+    </h5>
+    <div class="breadcrumb-wrapper">
+      <ol class="breadcrumb p-0 mb-0">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index-admin' %}"><i class="bx bx-home-alt"></i></a>
+        </li>
+        <li class="breadcrumb-item active">
+          {% trans 'O`zgartirish' %}
+        </li>
+      </ol>
+    </div>
+  </div>
+</ul>
+{% endblock %} {% block head %}
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue-ctk-date-time-picker.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue2-editor.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/katex.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/monokai-sublime.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/css/quill.snow.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/css/quill.imageUploader.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/css/main-editor.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/ui/prism.min.css' %}" />
+<link rel="stylesheet" type="text/css"
+  href="{% static 'back/app-assets/vendors/css/file-uploaders/dropzone.min.css' %}" />
+<link rel="stylesheet" type="text/css"
+  href="{% static 'back/app-assets/css/plugins/file-uploaders/dropzone.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond-plugin-image-preview.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/forms/select/select2.min.css' %}" />
+{% endblock %} {% block body %} {% include 'back/parts/menu.html' %}
+<!-- BEGIN: Content-->
+<div class="app-content content" id="app">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row"></div>
+    <div class="content-body">
+      <!-- app invoice View Page -->
+
+      <form action="{% url 'about:statistic_content_item-update' object.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <section class="invoice-edit-wrapper">
+          <div class="row">
+            <!-- invoice view page -->
+            <div class="col-xl-8 col-md-8 col-12">
+              <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link active" id="uzbek-tab" data-toggle="pill" href="#uzbek" aria-expanded="true"><i
+                      class="flag-icon flag-icon-uz mr-50"></i> O‘zbekcha</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="russian-tab" data-toggle="pill" href="#russian" aria-expanded="false"><i
+                      class="flag-icon flag-icon-ru mr-50"></i> Русский
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="english-tab" data-toggle="pill" href="#english" aria-expanded="false"><i
+                      class="flag-icon flag-icon-gb mr-50"></i> English
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content main-editor">
+                <div class="tab-pane active" id="uzbek" role="tabpanel" aria-labelledby="home-tab"
+                  aria-expanded="false">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title" style="text-transform: inherit">
+                        [UZ] Sarlavha
+                      </h4>
+                    </div>
+
+                    <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-lg-12 col-md-12">
+                            <fieldset class="invoice-address form-group">
+                              <input type="text" v-model="content_uz" class="form-control" required name="content_uz" />
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="russian" role="tabpanel" aria-labelledby="russian-tab" aria-expanded="false">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title" style="text-transform: inherit">
+                        [RU] Название
+                      </h4>
+                    </div>
+
+                    <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-lg-12 col-md-12">
+                            <fieldset class="invoice-address form-group">
+                              <input type="text" v-model="content_ru" class="form-control" name="content_ru" />
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="english" role="tabpanel" aria-labelledby="english-tab" aria-expanded="false">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title" style="text-transform: inherit">
+                        [EN] Title
+                      </h4>
+                    </div>
+
+                    <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-lg-12 col-md-12">
+                            <fieldset class="invoice-address form-group">
+                              <input type="text" v-model="content_en" class="form-control" name="content_en" />
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- invoice action  -->
+            <div class="col-xl-4 col-md-4 col-12 mt-4">
+              <div class="card invoice-action-wrapper shadow-none border">
+                <div class="card-body">
+                  <div class="invoice-action-btn mb-1">
+                    <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+                      <i class="bx bxs-save"></i>
+                      <span>{% trans 'Yangilash' %}</span>
+                    </button>
+                  </div>
+                  <div class="invoice-action-btn mb-1">
+                    <div class="save">
+                      <a href="{% url 'about:statistic_content_item-delete' object.id %}" class="btn btn-light-danger btn-block">
+                        <span class="text-nowrap">O'chirish</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="basicInput">{% trans 'Tartibi' %}</label>
+                      <input type="number" v-model="order" name="order" placeholder="Tartibini kiritng" class="form-control" required>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END: Content-->
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+{% endblock %} {% block js %}
+<script src="{% static 'back/app-assets/vendors/js/filepond-plugin-image-preview.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/filepond.js' %}"></script>
+<script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+<script src="{% static 'back/app-assets/js/vue.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/vue-ctk-date-time-picker.umd.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/katex.min.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/highlight.min.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/quill.imageUploader.min.js' %}"></script>
+<!-- Quill JS Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+<!-- Include stylesheet -->
+<link href="https://cdn.quilljs.com/1.3.4/quill.core.css" rel="stylesheet" />
+<link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet" />
+<link href="https://cdn.quilljs.com/1.3.4/quill.bubble.css" rel="stylesheet" />
+<script src="{% static 'back/app-assets/vendors/js/vue-filepond.min.js' %}"></script>
+<!-- BEGIN: Page Vendor JS-->
+<script src="{% static 'back/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+<!-- END: Page Vendor JS-->
+<script src="{% static 'back/app-assets/js/scripts/forms/select/form-select2.min.js' %}"></script>
+
+<script type="text/javascript">
+  Vue.component("vue-ctk-date-time-picker", window["vue-ctk-date-time-picker"]);
+  Vue.use(VueQuillEditor);
+
+  var app = new Vue({
+    el: "#app",
+    components: {
+      FilePond: vueFilePond.default(FilePondPluginImagePreview),
+    },
+    data: {
+
+       content_uz: "{{ object.content_uz|safe|escapejs }}",
+       content_ru: "{{ object.content_ru|safe|escapejs }}",
+      content_en: "{{ object.content_en|safe|escapejs }}",
+      number: "{{ object.number|safe|escapejs }}",
+      order: "{{ object.order|safe|escapejs }}",
+      //
+      // content_litte_uz: "{{ object.content_litte_uz|safe|escapejs }}",
+      // content_litte_ru: "{{ object.content_litte_ru|safe|escapejs }}",
+      // content_litte_en: "{{ object.content_litte_en|safe|escapejs }}",
+      //
+      // director_name_uz: "{{ object.director_name_uz|safe|escapejs }}",
+      // director_name_ru: "{{ object.director_name_ru|safe|escapejs }}",
+      // director_name_en: "{{ object.director_name_en|safe|escapejs }}",
+      //
+      // director_title_uz: "{{ object.director_title_uz|safe|escapejs }}",
+      // director_title_ru: "{{ object.director_title_ru|safe|escapejs }}",
+      // director_title_en: "{{ object.director_title_en|safe|escapejs }}",
+      //
+      // director_content_uz: "{{ object.director_content_uz|safe|escapejs }}",
+      // director_content_ru: "{{ object.director_content_ru|safe|escapejs }}",
+      // director_content_en: "{{ object.director_content_en|safe|escapejs }}",
+      //
+      // it_title_1_uz: "{{ object.it_title_1_uz|safe|escapejs }}",
+      // it_title_1_ru: "{{ object.it_title_1_ru|safe|escapejs }}",
+      // it_title_1_en: "{{ object.it_title_1_en|safe|escapejs }}",
+      //
+      // it_title_2_uz: "{{ object.it_title_2_uz|safe|escapejs }}",
+      // it_title_2_ru: "{{ object.it_title_2_ru|safe|escapejs }}",
+      // it_title_2_en: "{{ object.it_title_2_en|safe|escapejs }}",
+      //
+      // it_title_3_uz: "{{ object.it_title_3_uz|safe|escapejs }}",
+      // it_title_3_ru: "{{ object.it_title_3_ru|safe|escapejs }}",
+      // it_title_3_en: "{{ object.it_title_3_en|safe|escapejs }}",
+      //
+      // it_title_4_uz: "{{ object.it_title_4_uz|safe|escapejs }}",
+      // it_title_4_ru: "{{ object.it_title_4_ru|safe|escapejs }}",
+      // it_title_4_en: "{{ object.it_title_4_en|safe|escapejs }}",
+      //
+      // it_description_1_uz: "{{ object.it_description_1_uz|safe|escapejs }}",
+      // it_description_1_ru: "{{ object.it_description_1_ru|safe|escapejs }}",
+      // it_description_1_en: "{{ object.it_description_1_en|safe|escapejs }}",
+      //
+      // it_description_2_uz: "{{ object.it_description_2_uz|safe|escapejs }}",
+      // it_description_2_ru: "{{ object.it_description_2_ru|safe|escapejs }}",
+      // it_description_2_en: "{{ object.it_description_2_en|safe|escapejs }}",
+      //
+      // it_description_3_uz: "{{ object.it_description_3_uz|safe|escapejs }}",
+      // it_description_3_ru: "{{ object.it_description_3_ru|safe|escapejs }}",
+      // it_description_3_en: "{{ object.it_description_3_en|safe|escapejs }}",
+      //
+      // it_description_4_uz: "{{ object.it_description_4_uz|safe|escapejs }}",
+      // it_description_4_ru: "{{ object.it_description_4_ru|safe|escapejs }}",
+      // it_description_4_en: "{{ object.it_description_4_en|safe|escapejs }}",
+      //
+      // it_number_1: "{{ object.it_number_1|safe|escapejs }}",
+      // it_number_2: "{{ object.it_number_2|safe|escapejs }}",
+      // it_number_3: "{{ object.it_number_3|safe|escapejs }}",
+      // it_number_4: "{{ object.it_number_4|safe|escapejs }}",
+      //
+      //
+      //
+      // logo_uz: "{{ object.logo_uz|safe|escapejs }}",
+      // logo_ru: "{{ object.logo_ru|safe|escapejs }}",
+      // logo_en: "{{ object.logo_en|safe|escapejs }}",
+      // logo_sr: "{{ object.logo_sr|safe|escapejs }}",
+
+      message: "Hello!",
+      value: null,
+      ispublished: null,
+      myFiles: null,
+      videotrue: false,
+      editorOption: {
+        theme: "snow",
+      },
+    },
+    methods: {
+      handleFilePondInit: function () {
+        console.log("FilePond has initialized");
+        this.$refs.pond.getFiles();
+      },
+      onEditorBlur(quill) {
+        console.log("editor blur!", quill);
+      },
+      onEditorFocus(quill) {
+        console.log("editor focus!", quill);
+      },
+      onEditorReady(quill) {
+        console.log("editor ready!", quill);
+      },
+    },
+    computed: {
+      editor() {
+        return this.$refs.quillEditor.quill;
+      },
+      stringit() {
+        return (args) => {
+          return JSON.stringify(args);
+        };
+      },
+    },
+  });
+</script>
+
+{% endblock %}

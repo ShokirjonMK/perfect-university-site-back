@@ -1,0 +1,401 @@
+{% extends 'back/_base.html' %}
+{% load static i18n templatetags %}
+
+{% block mainbread %}
+    <ul class="nav navbar-nav bookmark-icons">
+        <div class="d-flex main-bread">
+            <h5 class="content-header-title float-left pr-1 mb-0">{% trans 'Barcha top linklar' %}</h5>
+            <div class="breadcrumb-wrapper">
+                <ol class="breadcrumb p-0 mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index-admin' %}"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </ul>
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue-ctk-date-time-picker.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue2-editor.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/katex.min.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/vue-toast-notification/dist/theme-sugar.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/monokai-sublime.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.snow.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.imageUploader.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/main-editor.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/ui/prism.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/css/plugins/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond-plugin-image-preview.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/forms/select/select2.min.css' %}">
+{% endblock %}
+
+{% block body %}
+    {% include 'back/parts/menu.html' %}
+    <!-- BEGIN: Content-->
+    <div class="app-content content" id="app">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <!-- app invoice View Page -->
+                <form action="{% url 'settings:top-link-create' %}" method="post">
+                    {% csrf_token %}
+                    <section class="invoice-edit-wrapper">
+                        <div class="row">
+                            <!-- invoice view page -->
+                            <div class="col-xl-8 col-md-8 col-12 mt-4">
+                                <div class="w-100">
+
+                                    <section id="accordion-icon-wrapper">
+                                        <div class="accordion collapse-icon accordion-icon-rotate" id="accordionWrapa2" data-toggle-hover="true">
+                                            <vue-nestable
+                                                    v-model="nestableItems"
+                                                    :max-depth="2"
+                                                    key-prop="id"
+                                                    :hooks="{
+                                                        'beforeMove': beforeMove
+                                                    }"
+{#                                                    hooks#}
+                                                    children-prop="child"
+                                                    class-prop="class">
+
+                                                <template slot-scope="{ item }">
+                                                    <div class="card collapse-header open">
+                                                        <div :id="'heading' + item.id" class="card-header" data-toggle="collapse"
+                                                             :data-target="'#accordion' + item.id" aria-expanded="false"
+                                                             :aria-controls="'accordion' + item.id" role="tablist">
+                                                        <span class="collapse-title custom-drag">
+                                                          <vue-nestable-handle :item="item">
+                                                            <i class="bx bx-grid-vertical"></i>
+                                                            </vue-nestable-handle>
+                                                            <template v-if="item.title_uz">
+                                                                <span class="align-middle">{% verbatim %}{{ item.title_uz }}{% endverbatim %} <code
+                                                                    class="ml-1">/{% verbatim %}{{ item.url }}{% endverbatim %}</code></span>
+                                                            </template>
+                                                            <template v-else>
+                                                                <span class="align-middle">Menyu nomi yo'q</span>
+                                                            </template>
+                                                        </span>
+                                                        </div>
+                                                        <div :id="'accordion' + item.id" role="tabpanel" data-parent="#accordionWrapa2"
+                                                            :aria-labelledby="'heading' + item.id" class="collapse">
+                                                        <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-prepend">
+                                      <span class="input-group-text"><i
+                                          class="flag-icon flag-icon-uz mr-1"></i> O‘zbekcha</span>
+                                            </div>
+                                            <input v-model="item.title_uz" type="text" class="form-control"
+                                                   placeholder="Sarlavha nomi" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-prepend">
+                                      <span class="input-group-text"><i
+                                          class="flag-icon flag-icon-ru mr-1"></i> Русский</span>
+                                            </div>
+                                            <input v-model="item.title_ru" type="text" class="form-control"
+                                                   placeholder="Sarlavha nomi" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-prepend">
+                                      <span class="input-group-text"><i
+                                          class="flag-icon flag-icon-gb mr-1"></i> English</span>
+                                            </div>
+                                            <input v-model="item.title_en" type="text" class="form-control"
+                                                   placeholder="Sarlavha nomi" aria-describedby="basic-addon1">
+                                        </div>
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">{{ host }}</span>
+                                            </div>
+                                            <input v-model="item.link" type="text" class="form-control"
+                                                   placeholder="URL" aria-describedby="basic-addon1">
+                                        </div>
+
+                                        <button type="button" class="btn btn-light-danger mt-2 mr-1"
+                                                @click.prevent="deleteMenu(item.id)"><i class="bx bxs-trash p-0"></i>
+                                            <span class="ml-25">O'chirish</span></button>
+                                    </div>
+                                </div>
+                                                        </div>
+                                                    </div>
+                        <!-- Handler -->
+
+                                                </template>
+                                            </vue-nestable>
+                                        </div>
+
+                                        <div v-for="(item, index) in nestableItems">
+                                            <input type="hidden" :name="`item.title_uz`" :value="item.title_uz">
+                                            <input type="hidden" :name="`item.title_ru`" :value="item.title_ru">
+                                            <input type="hidden" :name="`item.title_en`" :value="item.title_en">
+                                            <input type="hidden" :name="`item.link`" :value="item.link">
+                                            <input type="hidden" :name="`item.order`" :value="item.order">
+
+                                                <div v-for="(item2, index2) in item.child" v-if="item.child">
+                                                    <input type="hidden" :name="`item.child.title_uz`" :value="item2.title_uz">
+                                                    <input type="hidden" :name="`item.child.link`" :value="item2.link">
+                                                    <input type="hidden" :name="`item.child.order`" :value="item2.order">
+                </div>
+                                        </div>
+                                        <div class="footmenu d-flex">
+                <button type="button" class="btn btn-light-primary mr-1 mb-1" @click.prevent="addNewMenu">
+                    <i class="bx bx-plus"></i>
+                    <span class="align-middle ml-25">Yangi menyu</span>
+                </button>
+                <button type="button" class="btn btn-success glow mr-1 mb-1 ml-auto" @click.prevent="saveMenu">
+                    <i class="bx bx-check"></i>
+                    <span class="align-middle ml-25">Saqlash</span>
+                </button>
+            </div>
+                                    </section>
+                                </div>
+
+
+
+                            </div>
+                            <!-- invoice action  -->
+                        </div>
+                    </section>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'back/app-assets/vendors/js/filepond-plugin-image-preview.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/filepond.js' %}"></script>
+    <script src="{% static 'back/app-assets/js/vue.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/katex.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/highlight.min.js' %}"></script>
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/js/scripts/forms/select/form-select2.min.js' %}"></script>
+    <!-- Quill JS Vue -->
+        <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+    <!-- Include stylesheet -->
+
+    <link href="https://cdn.quilljs.com/1.3.4/quill.core.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.bubble.css" rel="stylesheet">
+    <!-- END: Vue Nestables-->
+    <script src="https://cdn.jsdelivr.net/npm/vue-nestable@2.6.0/dist/index.iife.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-toast-notification"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-toast-notification@0.6.2/dist/index.min.js"></script> #shu cdn
+    <script src="https://cdn.jsdelivr.net/npm/vue-toast-notification@2"></script>
+<link href="https://cdn.jsdelivr.net/npm/vue-toast-notification@2/dist/theme-sugar.css" rel="stylesheet">
+    <script type="text/javascript">
+
+    //Vue.use(vueNestable);
+
+    const {VueNestable, VueNestableHandle} = vueNestable
+    //const {VueNestableHandle, VueNestable} = vueNestableHandle
+
+    Vue.component('vue-nestable', VueNestable)
+    Vue.component('vue-nestable-handle', VueNestableHandle)
+    //Vue.use(VueNestableHandle)
+    Vue.use(VueQuillEditor);
+            function CustomImageHandler () {
+            const quill = this.quill;
+
+            const input = document.createElement('input');
+
+            input.setAttribute('type', 'file');
+            input.setAttribute('multiple', 'multiple');
+
+            input.setAttribute('accept', 'image/*');
+            input.click();
+
+            input.onchange = async () => {
+
+                for (let i = 0; i < input.files.length; i++) {
+                    const file = input.files[i];
+
+
+                const fileList = input.files;
+                const formData = new FormData();
+
+                formData.append('image', file);
+
+                // Save current cursor state
+                const range = quill.getSelection(true);
+
+                quill.insertEmbed(range.index, 'image', 'https://cdn.dribbble.com/users/1341307/screenshots/5377324/morph_dribbble.gif');
+
+                quill.setSelection(range.index + 1);
+
+
+                $.ajax({
+                    url: '{% url 'image-upload' %}',
+                    type:"POST",
+                    headers: { "X-CSRFToken": $("[name=csrfmiddlewaretoken]").val() },
+                    processData:false,
+                    contentType: false,
+                    data: formData,
+                    success: (res) => {
+                        quill.deleteText(range.index, 1);
+                        quill.insertEmbed(range.index, 'image', res.image);
+                    },
+                    error: (e) => {
+                        console.log(e)
+                    },
+                });
+            }
+
+            }
+        }
+    Vue.use(VueToast, {
+        position: 'top',
+        queue: false,
+        duration: 1000,
+    });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                move: true,
+                nestableItems: [],
+                api: '{% url "settings:top-link-api" %}',
+                post: '{{ post|safe }}',
+                host: '{{ host|safe }}',
+                delete: '{{ delete|safe }}',
+                message: 'Hello!',
+                headers : {"X-CSRFTOKEN": '{% csrf_token %}'},
+                value: null,
+                myFiles: null,
+                videotrue: false
+            },
+
+            header: {
+
+            },
+
+            mounted() {
+
+                axios
+                .get(this.api)
+                .then(response => {
+                    this.nestableItems = response.data
+                })
+            },
+            methods: {
+                 handleFilePondInit: function () {
+                    console.log('FilePond has initialized');
+                    this.$refs.pond.getFiles();
+                },
+                onEditorBlur(quill) {
+                    console.log('editor blur!', quill)
+                },
+                onEditorFocus(quill) {
+                    quill.getModule("toolbar").addHandler("image", CustomImageHandler);
+                    console.log('editor focus!', quill)
+                },
+                onEditorReady(quill) {
+                    quill.getModule("toolbar").addHandler("image", CustomImageHandler);
+                    console.log('editor ready!', quill)
+                },
+                checked(value){
+                    return value === true;
+                },
+                OrderUpdate(value){
+                    return value + 1
+                },
+
+                beforeMove() {
+                    return true
+                },
+                deleteMenu(keyitem) {
+                     console.log(keyitem)
+                    let parentIndex = this.nestableItems.findIndex(v => v.id === keyitem)
+                    if(parentIndex != -1) {
+                        this.nestableItems.splice(parentIndex, 1)
+                    } else {
+                        this.nestableItems.forEach((el, i) => {
+                            if(el.child) {
+                                let index = el.child.findIndex(v => v.id === keyitem)
+
+                                if(index != -1) {
+                                    this.nestableItems[i].child.splice(index, 1)
+                                }
+                            }
+                        })
+                    }
+
+
+                    axios.defaults.headers.common['X-CSRFTOKEN'] = $('input[name="csrfmiddlewaretoken"]').attr('value');
+                    axios
+                        .post(this.delete, {'id': keyitem})
+
+                },
+                addNewMenu() {
+                let newId = Math.floor(100000 + Math.random() * 900000);
+                let newMenu = {
+                    id: newId,
+                    url: '#',
+                    title_uz: 'Sarlavha nomi',
+                    title_ru: 'Sarlavha nomi',
+                    title_en: 'Sarlavha nomi',
+                    link: 'link',
+                    order: 0,
+                    child: [],
+                };
+                this.nestableItems.push(newMenu);
+            },
+
+                saveMenu(){
+                    this.nestableItems.forEach((item, index) => {
+                        item.order = index + 1
+                        if (item.child){
+                            item.child.forEach((child, index2) => {
+                                child.order = index2 + 1
+                            })
+                        }
+
+                    });
+                    axios.defaults.headers.common['X-CSRFTOKEN'] = $('input[name="csrfmiddlewaretoken"]').attr('value');
+                    axios
+                    .post(this.post, {'payload': this.nestableItems})
+                    .then(res => {
+                        if (res.status  === 201) this.$toast.success(res.data);
+                        else this.$toast.error(res.data);
+                    })
+
+
+                }
+
+
+            },
+              computed: {
+                editor() {
+                    return this.$refs.quillEditor.quill
+                }
+                ,
+                stringit() {
+                    return (args) => {
+                        return JSON.stringify(args)
+                    }
+                }
+            },
+
+
+        });
+    </script>
+{% endblock %}

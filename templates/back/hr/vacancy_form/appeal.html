@@ -1,0 +1,287 @@
+{% extends 'back/_base.html' %}
+{% load static i18n %}
+{% block mainbread %}
+    <ul class="nav navbar-nav bookmark-icons">
+        <div class="d-flex main-bread">
+            <h5 class="content-header-title float-left pr-1 mb-0">{% trans 'Arizalar' %}</h5>
+            <div class="breadcrumb-wrapper">
+                <ol class="breadcrumb p-0 mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index-admin' %}"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a
+                            href="{% url 'vacancy:vacant-list' %}">{% trans 'Barcha arizalar' %}</a>
+                    </li>
+                    <li class="breadcrumb-item active">{{ object.id }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </ul>
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue-ctk-date-time-picker.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue2-editor.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/katex.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/monokai-sublime.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.snow.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.imageUploader.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/main-editor.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/ui/prism.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/css/plugins/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond-plugin-image-preview.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/forms/select/select2.min.css' %}">
+{% endblock %}
+
+{% block body %}
+    {% include 'back/parts/menu.html' %}
+    <!-- BEGIN: Content-->
+    <div class="app-content content" id="app">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <!-- app invoice View Page -->
+                <section class="invoice-edit-wrapper">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-8 col-12">
+{#                            <ul class="nav nav-pills">#}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link active" id="uzbek-tab" data-toggle="pill" href="#personal"#}
+{#                                       aria-expanded="true"></i>#}
+{#                                        Shaxsiy ma'lumotlar</a>#}
+{#                                </li>#}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link" id="russian-tab" data-toggle="pill" href="#edu"#}
+{#                                       aria-expanded="false">Ta'lim#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link" id="russian-tab" data-toggle="pill" href="#science"#}
+{#                                       aria-expanded="false">Ilmiy#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link" id="russian-tab" data-toggle="pill" href="#skill"#}
+{#                                       aria-expanded="false">Mahorat#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                            </ul>#}
+                            <div class="tab-content main-editor">
+                                <div class="tab-pane active" id="personal" role="tabpanel" aria-labelledby="home-tab"
+                                     aria-expanded="false">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title" style="text-transform: inherit;">Shaxsiy
+                                                ma'lumotlar</h4>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-body pb-1 mx-25">
+                                                <div class="row">
+
+    {#                                                    <div class="col-12 col-md-6">#}
+    {#                                                        <label>Ism</label>#}
+    {#                                                        <p>{{ object.first_name }}</p>#}
+    {#                                                    </div>#}
+{#                                                    <div class="col-12 col-md-6">#}
+{#                                                        <label>Familiya</label>#}
+{#                                                        <p>{{ object.last_name }}</p>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-12 col-md-6">#}
+{#                                                        <label>Sharifi</label>#}
+{#                                                        <p>{{ object.middle_name }}</p>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-12 col-md-6">#}
+{#                                                        <label>Tug‘ilgan sana</label>#}
+{#                                                        <p>{{ object.date_of_birth }}</p>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-12 col-md-6">#}
+{#                                                        <label>Jinsi</label>#}
+{#                                                        <p>{{ object.get_gender_display }}</p>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-12 col-md-6">#}
+{#                                                        <label>Millati</label>#}
+{#                                                        <p>{{ object.nationality.title }}</p>#}
+{#                                                    </div>#}
+                                                    <div class="col-12 col-md-6">
+                                                        <label>Telefon raqami</label>
+                                                        <p>{{ object.phone_number }}</p>
+                                                    </div>
+{#                                                    <div class="col-12 col-md-6">#}
+{#                                                        <label>Elektron pochta</label>#}
+{#                                                        <p>{{ object.email }}</p>#}
+{#                                                    </div>#}
+                                                    <div class="col-12 col-md-6">
+                                                        <label>Rezyume</label>
+                                                        {% if object.resume_file %}
+                                                            <p><a href="{{ object.resume_file.url }}" target="_blank">{{ object.resume_file }}</a></p>
+                                                        {% else %}
+                                                            <p>Rezyume yuklanmagan</p>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="col-12 col-md-6">
+                                                        <label>Vakansiya</label>
+                                                        <p>{{ object.vacancy.title }}</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <label>Yaratilgan vaqt</label>
+                                                        <p>{{ object.created_at }}</p>
+                                                    </div>
+{#                                                 <div class="col-12">#}
+{#                                                        <label>Rasmi (3x4)</label>#}
+{#                                                        <p>#}
+{#                                                            <a href="{{ object.photo.file.url }}"><img#}
+{#                                                                    src="{{ object.photo.file.url }}"#}
+{#                                                                    alt="object.photo.file.url" width="354"#}
+{#                                                                    height="472"></a>#}
+{#                                                        </p>#}
+{##}
+{#                                                    </div>#}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+{#                                <div class="tab-pane" id="edu" role="tabpanel" aria-labelledby="edu-tab"#}
+{#                                     aria-expanded="false">#}
+{#                                    <div class="card">#}
+{#                                        <div class="card-header">#}
+{#                                            <h4 class="card-title" style="text-transform: inherit;">Ta'lim</h4>#}
+{#                                        </div>#}
+{#                                        <div class="card-content">#}
+{#                                            <div class="card-body pb-1 mx-25">#}
+{#                                                <div class="row">#}
+{#                                                    {% for step2_field in step2_fields %}#}
+{#                                                        <div class="col-12 col-md-6">#}
+{#                                                            <label>{{ step2_field.title }}</label>#}
+{#                                                            <p>{{ step2_field.get_value|safe }}</p>#}
+{#                                                        </div>#}
+{#                                                    {% endfor %}#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+
+{#                                <div class="tab-pane" id="science" role="tabpanel" aria-labelledby="science-tab"#}
+{#                                     aria-expanded="false">#}
+{#                                    <div class="card">#}
+{#                                        <div class="card-header">#}
+{#                                            <h4 class="card-title" style="text-transform: inherit;">Ilmiy</h4>#}
+{#                                        </div>#}
+{#                                        <div class="card-content">#}
+{#                                            <div class="card-body pb-1 mx-25">#}
+{#                                                <div class="row">#}
+{#                                                    {% for step3_field in step3_fields %}#}
+{#                                                        <div class="col-12 col-md-6">#}
+{#                                                            <label>{{ step3_field.title }}</label>#}
+{#                                                            <p>{{ step3_field.get_value|safe }}</p>#}
+{#                                                        </div>#}
+{#                                                    {% endfor %}#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="tab-pane" id="skill" role="tabpanel" aria-labelledby="skill-tab"#}
+{#                                     aria-expanded="false">#}
+{#                                    <div class="card">#}
+{#                                        <div class="card-header">#}
+{#                                            <h4 class="card-title" style="text-transform: inherit;">Mahorat</h4>#}
+{#                                        </div>#}
+{#                                        <div class="card-content">#}
+{#                                            <div class="card-body pb-1 mx-25">#}
+{#                                                <div class="row">#}
+{#                                                    {% for step4_field in step4_fields %}#}
+{#                                                        <div class="col-12 col-md-6">#}
+{#                                                            <label>{{ step4_field.title }}</label>#}
+{#                                                            <p>{{ step4_field.get_value |safe }}</p>#}
+{#                                                        </div>#}
+{#                                                    {% endfor %}#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+                            </div>
+                        </div>
+                        <!-- invoice action  -->
+                        <div class="col-xl-4 col-md-4 col-12 mt-4">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">{% trans 'Holati' %}</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            {{ form.status }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card invoice-action-wrapper shadow-none border">
+                                    <div class="card-body">
+                                        <div class="invoice-action-btn mb-1">
+                                            <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+                                                <i class="bx bxs-save"></i>
+                                                <span>{% trans 'Saqlash' %}</span>
+                                            </button>
+                                        </div>
+                                        <div class="invoice-action-btn mb-1">
+                                            <div class="save">
+                                                <a href="{% url 'vacancy:vacant-delete' object.id %}"
+                                                   class="btn btn-light-danger btn-block">
+                                                    <span class="text-nowrap">{% trans 'O‘chirish' %}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'back/app-assets/vendors/js/filepond-plugin-image-preview.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/filepond.js' %}"></script>
+    <script src="{% static 'back/app-assets/js/vue.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/vue-ctk-date-time-picker.umd.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/katex.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/highlight.min.js' %}"></script>
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/js/scripts/forms/select/form-select2.min.js' %}"></script>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                title_uz: '{{ object.title_uz|escapejs }}',
+                title_ru: '{{ object.title_ru|escapejs }}',
+                title_en: '{{ object.title_en|escapejs }}',
+                message: 'Hello!',
+                value: null,
+                myFiles: null,
+                videotrue: false
+            },
+        });
+    </script>
+{% endblock %}

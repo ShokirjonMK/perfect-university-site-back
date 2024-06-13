@@ -1,0 +1,126 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Wave CMS</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700"
+          rel="stylesheet">
+    <link rel="apple-touch-icon" href="{% static 'back/app-assets/images/logo/favicon.ico' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'back/app-assets/images/logo/favicon.ico' %}">
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/vendors.min.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/css/bootstrap-extended.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/css/colors.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/css/components.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/css/themes/dark-layout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/css/themes/semi-dark-layout.css' %}">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/css/pages/authentication.css' %}">
+    <!-- END: Page CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+<body>
+<!-- BEGIN: Content-->
+<div class="col-12">
+    <div class="row">
+        <div class="col-md-6" style="height: 100vh;">
+            <div class="row">
+                <div class="container d-flex justify-content-center left-auth">
+                    <img src="{% static 'back/app-assets/images/logo/wave-logo.png' %}" srcset="{% static 'back/app-assets/images/logo/wave-logo@2x.png' %} 2x" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="height: 100vh;">
+            <div class="row">
+                <div class="container d-flex justify-content-center right-auth">
+                    <form action="{% url 'login' %}" method="post">{% csrf_token %}
+{#                        {{ form }}#}
+                                            <div class="form-group mb-50">
+                            <label class="text-bold-600"
+                                   for="exampleInputEmail1">Login</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="Loginni kiriting" name="username"></div>
+                        <div class="form-group">
+                            <label class="text-bold-600"
+                                   for="exampleInputPassword1">Parol</label>
+                            <input type="password" class="form-control" name="password"
+                                   id="exampleInputPassword1" placeholder="Parolni kiriting">
+                        </div>
+                        <div class="form-group">
+                            {{ form.captcha }}
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        {% if error_nouser %}
+                            <div style="color: red" class="text-center">{% trans 'User yo`q' %}</div>
+                        {% endif %}
+                                            <button type="submit"
+                                class="btn btn-primary glow w-100 position-relative">{% trans 'Kirish' %}<i
+                                id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+<!-- BEGIN: Vendor JS-->
+<script src="{% static 'back/app-assets/vendors/js/vendors.min.js' %}"></script>
+<script src="{% static 'back/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.tools.js' %}"></script>
+<script src="{% static 'back/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js' %}"></script>
+<script src="{% static 'back/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.min.js' %}"></script>
+<!-- BEGIN Vendor JS-->
+
+<!-- BEGIN: Page Vendor JS-->
+<!-- END: Page Vendor JS-->
+
+<!-- BEGIN: Theme JS-->
+<script src="{% static 'back/app-assets/js/scripts/configs/vertical-menu-light.js' %}"></script>
+<script src="{% static 'back/app-assets/js/core/app-menu.js' %}"></script>
+<script src="{% static 'back/app-assets/js/core/app.js' %}"></script>
+<script src="{% static 'back/app-assets/js/scripts/components.js' %}"></script>
+<script src="{% static 'back/app-assets/js/scripts/footer.js' %}"></script>
+<!-- END: Theme JS-->
+
+<!-- BEGIN: Page JS-->
+<!-- END: Page JS-->
+<script src='https://www.google.com/recaptcha/api.js?onload=recaptchaOnload&render=explicit' async defer></script>
+
+<script>
+  var _captchaTries = 0;
+function recaptchaOnload() {
+    _captchaTries++;
+    if (_captchaTries > 9)
+        return;
+    if ($('.g-recaptcha').length > 0) {
+        grecaptcha.render("recaptcha", {
+            sitekey: '6Leu4R4cAAAAAGjBuEIdb6oX3-sbtX5YUSMXYnwf',
+            callback: function() {
+                console.log('recaptcha callback');
+                $('#submitBtn').prop( "disabled", false );
+            }
+        });
+        return;
+    }
+    window.setTimeout(recaptchaOnload, 1000);
+}
+</script>
+</body>
+<!-- END: Body-->
+</html>

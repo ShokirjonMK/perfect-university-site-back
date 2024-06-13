@@ -1,0 +1,184 @@
+{% extends 'back/_base.html' %}
+{% load thumbnail %}
+{% load static i18n %}
+{% block mainbread %}
+    <ul class="nav navbar-nav bookmark-icons">
+        <div class="d-flex main-bread">
+            <h5 class="content-header-title float-left pr-1 mb-0">{% trans 'Barcha murojaatlar' %}</h5>
+            <div class="breadcrumb-wrapper">
+                <ol class="breadcrumb p-0 mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index-admin' %}"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a
+                            href="{% url 'science:conference-application-list' %}">{% trans 'Murojaatlar' %}</a>
+                    </li>
+                    <li class="breadcrumb-item active"><a href="#">{% trans 'Tahrirlash' %}</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </ul>
+{% endblock %}
+{% block body %}
+    {% include 'back/parts/menu.html' %}
+    <!-- BEGIN: Content-->
+    <div class="app-content content" id="app">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <!-- app invoice View Page -->
+                <form action="{% url 'science:conference-application-update' object.id %}"
+                      method="post">{% csrf_token %}
+                    <section class="invoice-edit-wrapper">
+                        <div class="row">
+                            <!-- invoice view page -->
+                            <div class="col-xl-8 col-md-8 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title"
+                                            style="text-transform: inherit;">{% trans 'FISH' %}</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body pb-1 mx-25">
+                                            <!-- invoice address and contact -->
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <input type="text"
+                                                               class="form-control" disabled autocomplete="off"
+                                                               placeholder="{% trans 'fish' %}"
+                                                               name="full_name"
+                                                               value="{{ object.full_name|escapejs }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Telefon raqami' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control" disabled
+                                                               name="sender_contact"
+                                                               value="{{ object.phone_number|escapejs }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans "Qo'shimcha telefon raqami" %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control" disabled
+                                                               name="sender_contact"
+                                                               value="{{ object.addition_phone_number|escapejs }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Email' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control" disabled
+                                                               name="sender_contact"
+                                                               value="{{ object.email|escapejs }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="row invoice-info">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <fieldset class="form-group">
+                                                        <label>{% trans 'Konferensiya' %}</label>
+                                                        <input type="text" autocomplete="off"
+                                                               class="form-control" disabled
+                                                               name="sender_contact"
+                                                               value="{{ object.conference.title }}">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">{% trans 'Status' %}</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body bolimlar">
+                                            <div class="form-group">
+                                                <select class="form-control" required name="status">
+                                                    {% for s in status %}
+                                                        <option value="{{ s.0 }}"
+                                                                {% if object.status == s.0 %}selected
+                                                                {% endif %}>
+                                                            {{ s.1 }}
+                                                        </option>
+                                                    {% endfor %}
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- invoice action  -->
+                            <div class="col-xl-4 col-md-4 col-12">
+                                <div class="card invoice-action-wrapper shadow-none border">
+                                    <div class="card-body">
+                                        <div class="invoice-action-btn mb-1">
+                                            <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+                                                <i class="bx bxs-save"></i>
+                                                <span>{% trans 'Yangilash' %}</span>
+                                            </button>
+                                        </div>
+                                        <div class="invoice-action-btn mb-1">
+                                            <div class="save">
+                                                <a href="{% url 'science:conference-application-delete' object.id %}"
+                                                   class="btn btn-light-danger btn-block">
+                                                    <span class="text-nowrap">{% trans 'O‘chirish' %}</span>
+                                                </a>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">{% trans 'Maqola' %}</h4>
+                                                </div>
+                                                <div class="card-content">
+                                                    <div class="card-body bolimlar">
+                                                        <div class="form-group">
+                                                            <div class="custom-file">
+                                                                {% if object.file %}
+                                                                    <a href="{{ object.file.url }}">{{ object.file.name }}</a>
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

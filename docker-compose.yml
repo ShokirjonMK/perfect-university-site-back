@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_HOST=${DB_HOST}
+      - POSTGRES_PORT=${DB_PORT}
+    restart: always
+
+  web: &web
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:${WEB_PORT}
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - ./:/home/app/web
+    env_file:
+      - .env
+    ports:
+      - ${WEB_PORT}:${WEB_PORT}
+    depends_on:
+      - db
+      - redis
+
+  celery_worker:
+    <<: *web
+    ports: [ ]
+    command: celery -A config worker -l INFO
+    restart: always
+
+  redis:
+    image: redis:6-alpine
+    restart: always
+
+volumes:
+  postgres_data:

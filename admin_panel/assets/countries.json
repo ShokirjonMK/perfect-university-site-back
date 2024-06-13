@@ -1,0 +1,1196 @@
+[
+    {
+        "name": "Afghanistan",
+        "name_uz": "Afg'oniston",
+        "name_ru": "Афганистан",
+        "name_sr": "Афғонистон"
+    },
+    {
+        "name": "Albania",
+        "name_uz": "Albaniya",
+        "name_ru": "Албания",
+        "name_sr": "Албания"
+    },
+    {
+        "name": "Algeria",
+        "name_uz": "Jazoir",
+        "name_ru": "Алжир",
+        "name_sr": "Жазоир"
+    },
+    {
+        "name": "American",
+        "name_uz": "America",
+        "name_ru": "Америка",
+        "name_sr": "Америка"
+    },
+    {
+        "name": "Andorra",
+        "name_uz": "Andorra",
+        "name_ru": "Андорра",
+        "name_sr": "Андорра"
+    },
+    {
+        "name": "Angola",
+        "name_uz": "Angola",
+        "name_ru": "Ангола",
+        "name_sr": "Ангола"
+    },
+    {
+        "name": "Anguilla",
+        "name_uz": "Angullia",
+        "name_ru": "Ангилья",
+        "name_sr": "Ангуллиа"
+    },
+    {
+        "name": "Antarctica",
+        "name_uz": "Antraktika",
+        "name_ru": "Антарктида",
+        "name_sr": "Антрактика"
+    },
+    {
+        "name": "Argentina",
+        "name_uz": "Argentina",
+        "name_ru": "Аргентина",
+        "name_sr": "Аргентина"
+    },
+    {
+        "name": "Armenia",
+        "name_uz": "Armaniya",
+        "name_ru": "Армения",
+        "name_sr": "Армания"
+    },
+    {
+        "name": "Aruba",
+        "name_uz": "Aruba",
+        "name_ru": "Аруба",
+        "name_sr": "Аруба"
+    },
+    {
+        "name": "Australia",
+        "name_uz": "Avstraliya",
+        "name_ru": "Австралия",
+        "name_sr": "Австралия"
+    },
+    {
+        "name": "Austria",
+        "name_uz": "Avstriya",
+        "name_ru": "Австрия",
+        "name_sr": "Австрия"
+    },
+    {
+        "name": "Azerbaijan",
+        "name_uz": "Ozarbayjon",
+        "name_ru": "Азербайджан",
+        "name_sr": "Озарбайжон"
+    },
+    {
+        "name": "Bahrain",
+        "name_uz": "Bahrayin",
+        "name_ru": "Бахрейн",
+        "name_sr": "Баҳрайин"
+    },
+    {
+        "name": "Bangladesh",
+        "name_uz": "Bangladesh",
+        "name_ru": "Бангладеш",
+        "name_sr": "Бангладеш"
+    },
+    {
+        "name": "Barbados",
+        "name_uz": "Barbados",
+        "name_ru": "Барбадос",
+        "name_sr": "Барбадос"
+    },
+    {
+        "name": "Belarus",
+        "name_uz": "Belarusiya",
+        "name_ru": "Беларусь",
+        "name_sr": "Беларусия"
+    },
+    {
+        "name": "Belgium",
+        "name_uz": "Belgiya",
+        "name_ru": "Бельгия",
+        "name_sr": "Белгия"
+    },
+    {
+        "name": "Belize",
+        "name_uz": "Beliza",
+        "name_ru": "Белиз",
+        "name_sr": "Белиза"
+    },
+    {
+        "name": "Benin",
+        "name_uz": "Benin",
+        "name_ru": "Бенин",
+        "name_sr": "Бенин"
+    },
+    {
+        "name": "Bermuda",
+        "name_uz": "Bermuda",
+        "name_ru": "Бермудские острова",
+        "name_sr": "Бермуда"
+    },
+    {
+        "name": "Bhutan",
+        "name_uz": "Bhutan",
+        "name_ru": "Бутан",
+        "name_sr": "Бҳутан"
+    },
+    {
+        "name": "Bolivia",
+        "name_uz": "Boliviya",
+        "name_ru": "Боливия",
+        "name_sr": "Боливия"
+    },
+    {
+        "name": "Bosnia and Herzegovina",
+        "name_uz": "Bonsiya va Gersegovina",
+        "name_ru": "Босния и Герцеговина",
+        "name_sr": "Бонсия ва Герсеговина"
+    },
+    {
+        "name": "Botswana",
+        "name_uz": "Bostvana",
+        "name_ru": "Ботсвана",
+        "name_sr": "Боствана"
+    },
+    {
+        "name": "Bouvet Island",
+        "name_uz": "Buvet Oroli",
+        "name_ru": "Остров Буве",
+        "name_sr": "Бувет Ороли"
+    },
+    {
+        "name": "Brazil",
+        "name_uz": "Brazilya",
+        "name_ru": "Бразилия",
+        "name_sr": "Бразиля"
+    },
+    {
+        "name": "British Indian Ocean Territory",
+        "name_uz": "Britaniya Hind okeani hududi",
+        "name_ru": "Британская территория Индийского океана",
+        "name_sr": "Британия Ҳинд океани ҳудуди"
+    },
+    {
+        "name": "Bulgaria",
+        "name_uz": "Bolgariya",
+        "name_ru": "Болгария",
+        "name_sr": "Болгария"
+    },
+    {
+        "name": "Burkina Faso",
+        "name_uz": "Burkina Faso",
+        "name_ru": "Буркина-Фасо",
+        "name_sr": "Буркина Фасо"
+    },
+    {
+        "name": "Burundi",
+        "name_uz": "Burundi",
+        "name_ru": "Бурунди",
+        "name_sr": "Бурунди"
+    },
+    {
+        "name": "Cambodia",
+        "name_uz": "Kambodja",
+        "name_ru": "Камбоджа",
+        "name_sr": "Камбоджа"
+    },
+    {
+        "name": "Cameroon",
+        "name_uz": "Kamerun",
+        "name_ru": "Камерун",
+        "name_sr": "Камерун"
+    },
+    {
+        "name": "Canada",
+        "name_uz": "Kanada",
+        "name_ru": "Канада",
+        "name_sr": "Канада"
+    },
+    {
+        "name": "Cape Verde",
+        "name_uz": "Kabo-Verde",
+        "name_ru": "Кабо-Верде",
+        "name_sr": "Кабо-Верде"
+    },
+    {
+        "name": "Cayman Islands",
+        "name_uz": "Kayman orollari",
+        "name_ru": "Каймановы острова",
+        "name_sr": "Кайман ороллари"
+    },
+    {
+        "name": "Central African Republic",
+        "name_uz": "Markaziy Afrika Respublikasi",
+        "name_ru": "Центрально-Африканская Республика",
+        "name_sr": "Марказий Африка Республикаси"
+    },
+    {
+        "name": "Chad",
+        "name_uz": "Chad",
+        "name_ru": "Чад",
+        "name_sr": "Чад"
+    },
+    {
+        "name": "Chile",
+        "name_uz": "Chili",
+        "name_ru": "Чили",
+        "name_sr": "Чили"
+    },
+    {
+        "name": "China",
+        "name_uz": "Xitoy",
+        "name_ru": "Китай",
+        "name_sr": "Хитой"
+    },
+    {
+        "name": "Christmas Island",
+        "name_uz": "Kristmas Oroli",
+        "name_ru": "Остров Рождества",
+        "name_sr": "Кристмас Ороли"
+    },
+    {
+        "name": "Cocos (Keeling) Islands",
+        "name_uz": "Kokos Oroli",
+        "name_ru": "Кокос (Килинг) Острова",
+        "name_sr": "Кокос Ороли"
+    },
+    {
+        "name": "Colombia",
+        "name_uz": "Kolumbiya",
+        "name_ru": "Колумбия",
+        "name_sr": "Колумбия"
+    },
+    {
+        "name": "Comoros",
+        "name_uz": "Komor orollari",
+        "name_ru": "Коморос",
+        "name_sr": "Комор ороллари"
+    },
+    {
+        "name": "Congo",
+        "name_uz": "Kongo",
+        "name_ru": "Конго",
+        "name_sr": "Конго"
+    },
+    {
+        "name": "Congo, The Democratic Republic of the",
+        "name_uz": "Kongo Xalq Respublikasi",
+        "name_ru": "Конго, Демократическая Республика",
+        "name_sr": "Конго Халқ Республикаси"
+    },
+    {
+        "name": "Costa Rica",
+        "name_uz": "Kosta-Rika",
+        "name_ru": "Коста -Рика",
+        "name_sr": "Коста-Рика"
+    },
+    {
+        "name": "Cote D'Ivoire",
+        "name_uz": "Kot-d'Ivuar",
+        "name_ru": "Кот-дЪИвуар",
+        "name_sr": "Кот-дЪИвуар"
+    },
+    {
+        "name": "Croatia",
+        "name_uz": "Xorvatiya",
+        "name_ru": "Хорватия",
+        "name_sr": "Хорватия"
+    },
+    {
+        "name": "Cuba",
+        "name_uz": "Kuba",
+        "name_ru": "Куба",
+        "name_sr": "Куба"
+    },
+    {
+        "name": "Cyprus",
+        "name_uz": "Kipr",
+        "name_ru": "Кипр",
+        "name_sr": "Кипр"
+    },
+    {
+        "name": "Czech Republic",
+        "name_uz": "Chexiya",
+        "name_ru": "Чешская Республика",
+        "name_sr": "Чехия"
+    },
+    {
+        "name": "Denmark",
+        "name_uz": "Daniya",
+        "name_ru": "Дания",
+        "name_sr": "Дания"
+    },
+    {
+        "name": "Djibouti",
+        "name_uz": "Jibuti",
+        "name_ru": "Джибути",
+        "name_sr": "Жибути"
+    },
+    {
+        "name": "Dominica",
+        "name_uz": "Dominika",
+        "name_ru": "Доминика",
+        "name_sr": "Доминика"
+    },
+    {
+        "name": "Dominican Republic",
+        "name_uz": "Dominika Respublikasi",
+        "name_ru": "Доминиканская Респблика",
+        "name_sr": "Доминика Республикаси"
+    },
+    {
+        "name": "Ecuador",
+        "name_uz": "Ekvador",
+        "name_ru": "Эквадор",
+        "name_sr": "Эквадор"
+    },
+    {
+        "name": "Egypt",
+        "name_uz": "Misr",
+        "name_ru": "Египет",
+        "name_sr": "Миср"
+    },
+    {
+        "name": "El Salvador",
+        "name_uz": "El Salvador",
+        "name_ru": "Эль Сальвадор",
+        "name_sr": "Эл Салвадор"
+    },
+    {
+        "name": "Equatorial Guinea",
+        "name_uz": "Ekvatorial Gvineya",
+        "name_ru": "Экваториальная Гвинея",
+        "name_sr": "Экваториал Гвинея"
+    },
+    {
+        "name": "Eritrea",
+        "name_uz": "Eritreya",
+        "name_ru": "Эритрея",
+        "name_sr": "Эритрея"
+    },
+    {
+        "name": "Estonia",
+        "name_uz": "Estoniya",
+        "name_ru": "Эстония",
+        "name_sr": "Эстония"
+    },
+    {
+        "name": "Ethiopia",
+        "name_uz": "Efiopiya",
+        "name_ru": "Эфиопия",
+        "name_sr": "Эфиопия"
+    },
+    {
+        "name": "Falkland Islands (Malvinas)",
+        "name_uz": "Folklend orollari (Malvin orollari)",
+        "name_ru": "Фолклендские острова (Мальвинс)",
+        "name_sr": "Фолкленд ороллари (Малвин ороллари)"
+    },
+    {
+        "name": "Faroe Islands",
+        "name_uz": "Faroe Orollari",
+        "name_ru": "Фарерские острова",
+        "name_sr": "Фароэ Ороллари"
+    },
+    {
+        "name": "Fiji",
+        "name_uz": "Fiji",
+        "name_ru": "Фиджи",
+        "name_sr": "Фижи"
+    },
+    {
+        "name": "Finland",
+        "name_uz": "Finlandiya",
+        "name_ru": "Финляндия",
+        "name_sr": "Финландия"
+    },
+    {
+        "name": "France",
+        "name_uz": "Fransiya",
+        "name_ru": "Франция",
+        "name_sr": "Франсия"
+    },
+    {
+        "name": "French Guiana",
+        "name_uz": "Fransuz Gvianasi",
+        "name_ru": "Французская Гвиана",
+        "name_sr": "Франсуз Гвианаси"
+    },
+    {
+        "name": "French Polynesia",
+        "name_uz": "Fransuz Polineziyasi",
+        "name_ru": "Французская Полинезия",
+        "name_sr": "Франсуз Полинезияси"
+    },
+    {
+        "name": "Gabon",
+        "name_uz": "Gabon",
+        "name_ru": "Габон",
+        "name_sr": "Габон"
+    },
+    {
+        "name": "Gambia",
+        "name_uz": "Gambiya",
+        "name_ru": "Гамбия",
+        "name_sr": "Гамбия"
+    },
+    {
+        "name": "Georgia",
+        "name_uz": "Gruziya",
+        "name_ru": "Грузия",
+        "name_sr": "Грузия"
+    },
+    {
+        "name": "Germany",
+        "name_uz": "Germaniya",
+        "name_ru": "Германия",
+        "name_sr": "Германия"
+    },
+    {
+        "name": "Ghana",
+        "name_uz": "Gana",
+        "name_ru": "Гана",
+        "name_sr": "Гана"
+    },
+    {
+        "name": "Gibraltar",
+        "name_uz": "Gibraltal",
+        "name_ru": "Гибралтар",
+        "name_sr": "Гибралтал"
+    },
+    {
+        "name": "Greece",
+        "name_uz": "Gresiya",
+        "name_ru": "Греция",
+        "name_sr": "Гресия"
+    },
+    {
+        "name": "Greenland",
+        "name_uz": "Grelandiya",
+        "name_ru": "Гренландия",
+        "name_sr": "Греландия"
+    },
+    {
+        "name": "Grenada",
+        "name_uz": "Grnada",
+        "name_ru": "Гренада",
+        "name_sr": "Грнада"
+    },
+    {
+        "name": "Guadeloupe",
+        "name_uz": "Guadelopu",
+        "name_ru": "Гваделупа",
+        "name_sr": "Гуаделопу"
+    },
+    {
+        "name": "Guam",
+        "name_uz": "Guam",
+        "name_ru": "Гуам",
+        "name_sr": "Гуам"
+    },
+    {
+        "name": "Guatemala",
+        "name_uz": "Guatemala",
+        "name_ru": "Гватемала",
+        "name_sr": "Гуатемала"
+    },
+    {
+        "name": "Guernsey",
+        "name_uz": "Guernsey",
+        "name_ru": "Гернси",
+        "name_sr": "Гуэрнсей"
+    },
+    {
+        "name": "Guinea",
+        "name_uz": "Guinea",
+        "name_ru": "Гвинея",
+        "name_sr": "Гуинеа"
+    },
+    {
+        "name": "Guyana",
+        "name_uz": "Guyana",
+        "name_ru": "Гайана",
+        "name_sr": "Гуяна"
+    },
+    {
+        "name": "Haiti",
+        "name_uz": "Gaiti",
+        "name_ru": "Гаити",
+        "name_sr": "Гаити"
+    },
+    {
+        "name": "Honduras",
+        "name_uz": "Gonduras",
+        "name_ru": "Гондурас",
+        "name_sr": "Гондурас"
+    },
+    {
+        "name": "Hong Kong",
+        "name_uz": "Gonkong",
+        "name_ru": "Гонконг",
+        "name_sr": "Гонконг"
+    },
+    {
+        "name": "Hungary",
+        "name_uz": "Vengirya",
+        "name_ru": "Венгрия",
+        "name_sr": "Венгиря"
+    },
+    {
+        "name": "Iceland",
+        "name_uz": "Islandiya",
+        "name_ru": "Исландия",
+        "name_sr": "Исландия"
+    },
+    {
+        "name": "India",
+        "name_uz": "Hindiston",
+        "name_ru": "Индия",
+        "name_sr": "Ҳиндистон"
+    },
+    {
+        "name": "Indonesia",
+        "name_uz": "Indoneziya",
+        "name_ru": "Индонезия",
+        "name_sr": "Индонезия"
+    },
+    {
+        "name": "Iran, Islamic Republic Of",
+        "name_uz": "Eron Islom Respublikasi",
+        "name_ru": "Иран, Исламская Республика",
+        "name_sr": "Эрон Ислом Республикаси"
+    },
+    {
+        "name": "Iraq",
+        "name_uz": "Iraq",
+        "name_ru": "Ирак",
+        "name_sr": "Ирақ"
+    },
+    {
+        "name": "Ireland",
+        "name_uz": "Irlandiya",
+        "name_ru": "Ирландия",
+        "name_sr": "Ирландия"
+    },
+    {
+        "name": "Israel",
+        "name_uz": "Isroil",
+        "name_ru": "Израиль",
+        "name_sr": "Исроил"
+    },
+    {
+        "name": "Italy",
+        "name_uz": "Italiya",
+        "name_ru": "Италия",
+        "name_sr": "Италия"
+    },
+    {
+        "name": "Jamaica",
+        "name_uz": "Yamayka",
+        "name_ru": "Ямайка",
+        "name_sr": "Ямайка"
+    },
+    {
+        "name": "Japan",
+        "name_uz": "Yaponiya",
+        "name_ru": "Япония",
+        "name_sr": "Япония"
+    },
+    {
+        "name": "Jordan",
+        "name_uz": "Iordaniya",
+        "name_ru": "Иордания",
+        "name_sr": "Иордания"
+    },
+    {
+        "name": "Kazakhstan",
+        "name_uz": "Qozog'iston",
+        "name_ru": "Казахстан",
+        "name_sr": "Қозоғистон"
+    },
+    {
+        "name": "Kenya",
+        "name_uz": "Keniya",
+        "name_ru": "Кения",
+        "name_sr": "Кения"
+    },
+    {
+        "name": "Korea, Democratic People'S Republic of",
+        "name_uz": "Koreya (Shimoliy) Xalq Demokratik Respublikasi",
+        "name_ru": "Корея, Демократическая народная Республика",
+        "name_sr": "Корея (Шимолий) Халқ Демократик Республикаси"
+    },
+    {
+        "name": "Korea, Republic of",
+        "name_uz": "Janubiy Koreya Respublikasi",
+        "name_ru": "Корея, Республика",
+        "name_sr": "Жанубий Корея Республикаси"
+    },
+    {
+        "name": "Kuwait",
+        "name_uz": "Quvayt",
+        "name_ru": "Кувейт",
+        "name_sr": "Қувайт"
+    },
+    {
+        "name": "Kyrgyzstan",
+        "name_uz": "Qirg'iziston",
+        "name_ru": "Кыргизстан",
+        "name_sr": "Қирғизистон"
+    },
+    {
+        "name": "Lao People'S Democratic Republic",
+        "name_uz": "Lao Xalq Demokratik Respublikasi",
+        "name_ru": "Лаосская Народно-Демократическая Республика",
+        "name_sr": "Лао Халқ Демократик Республикаси"
+    },
+    {
+        "name": "Latvia",
+        "name_uz": "Latviya",
+        "name_ru": "Латвия",
+        "name_sr": "Латвия"
+    },
+    {
+        "name": "Lebanon",
+        "name_uz": "Levan",
+        "name_ru": "Ливан",
+        "name_sr": "Леван"
+    },
+    {
+        "name": "Liberia",
+        "name_uz": "Liberiya",
+        "name_ru": "Либерия",
+        "name_sr": "Либерия"
+    },
+    {
+        "name": "Libyan Arab Jamahiriya",
+        "name_uz": "Livan",
+        "name_ru": "Ливия арабская публика",
+        "name_sr": "Ливан"
+    },
+    {
+        "name": "Liechtenstein",
+        "name_uz": "Lixteyshteyin",
+        "name_ru": "Лихтенштейн",
+        "name_sr": "Лихтейштейин"
+    },
+    {
+        "name": "Luxembourg",
+        "name_uz": "Luxsemburg",
+        "name_ru": "Люксембург",
+        "name_sr": "Лухсембург"
+    },
+    {
+        "name": "Macao",
+        "name_uz": "Maкao",
+        "name_ru": "Макао",
+        "name_sr": "Макао"
+    },
+    {
+        "name": "Macedonia, The Former Yugoslav Republic of",
+        "name_uz": "Makadoniya",
+        "name_ru": "Македония, бывшая Югославская Республика",
+        "name_sr": "Макадония"
+    },
+    {
+        "name": "Madagascar",
+        "name_uz": "Madagaskar",
+        "name_ru": "Мадагаскар",
+        "name_sr": "Мадагаскар"
+    },
+    {
+        "name": "Malawi",
+        "name_uz": "Malavi",
+        "name_ru": "Малави",
+        "name_sr": "Малави"
+    },
+    {
+        "name": "Malaysia",
+        "name_uz": "Malayziya",
+        "name_ru": "Малайзия",
+        "name_sr": "Малайзия"
+    },
+    {
+        "name": "Maldives",
+        "name_uz": "Maldiviya",
+        "name_ru": "Мальдивы",
+        "name_sr": "Малдивия"
+    },
+    {
+        "name": "Mali",
+        "name_uz": "Mali",
+        "name_ru": "Мали",
+        "name_sr": "Мали"
+    },
+    {
+        "name": "Malta",
+        "name_uz": "Malta",
+        "name_ru": "Мальта",
+        "name_sr": "Малта"
+    },
+    {
+        "name": "Marshall Islands",
+        "name_uz": "Marshall Orollari",
+        "name_ru": "Маршалловы острова",
+        "name_sr": "Маршалл Ороллари"
+    },
+    {
+        "name": "Mauritania",
+        "name_uz": "Mavritaniya",
+        "name_ru": "Мавритания",
+        "name_sr": "Мавритания"
+    },
+    {
+        "name": "Mayotte",
+        "name_uz": "Mayotte",
+        "name_ru": "Майотт",
+        "name_sr": "Маётте"
+    },
+    {
+        "name": "Mexico",
+        "name_uz": "Meksika",
+        "name_ru": "Мексика",
+        "name_sr": "Мексика"
+    },
+    {
+        "name": "Moldova, Republic of",
+        "name_uz": "Moldoviya",
+        "name_ru": "Молдова, Республика",
+        "name_sr": "Молдовия"
+    },
+    {
+        "name": "Monaco",
+        "name_uz": "Monako",
+        "name_ru": "Монако",
+        "name_sr": "Монако"
+    },
+    {
+        "name": "Mongolia",
+        "name_uz": "Mongoliya",
+        "name_ru": "Монголия",
+        "name_sr": "Монголия"
+    },
+    {
+        "name": "Morocco",
+        "name_uz": "Marokko",
+        "name_ru": "Марокко",
+        "name_sr": "Марокко"
+    },
+    {
+        "name": "Mozambique",
+        "name_uz": "Mozambika",
+        "name_ru": "Мозамбик",
+        "name_sr": "Мозамбика"
+    },
+    {
+        "name": "Myanmar",
+        "name_uz": "Mayami",
+        "name_ru": "Мьянма",
+        "name_sr": "Маями"
+    },
+    {
+        "name": "Namibia",
+        "name_uz": "Nambiya",
+        "name_ru": "Намибия",
+        "name_sr": "Намбия"
+    },
+    {
+        "name": "Nauru",
+        "name_uz": "Naura",
+        "name_ru": "Науру",
+        "name_sr": "Наура"
+    },
+    {
+        "name": "Nepal",
+        "name_uz": "Nepal",
+        "name_ru": "Непал",
+        "name_sr": "Непал"
+    },
+    {
+        "name": "Netherlands",
+        "name_uz": "Gollandiya",
+        "name_ru": "Нидерланды",
+        "name_sr": "Голландия"
+    },
+    {
+        "name": "New Caledonia",
+        "name_uz": "Yangi Kaledoniya",
+        "name_ru": "Новая Каледония",
+        "name_sr": "Янги Каледония"
+    },
+    {
+        "name": "New Zealand",
+        "name_uz": "Yangi Zelandiya",
+        "name_ru": "Новая Зеландия",
+        "name_sr": "Янги Зеландия"
+    },
+    {
+        "name": "Nicaragua",
+        "name_uz": "Nikagura",
+        "name_ru": "Никарагуа",
+        "name_sr": "Никагура"
+    },
+    {
+        "name": "Niger",
+        "name_uz": "Niger",
+        "name_ru": "Нигер",
+        "name_sr": "Нигер"
+    },
+    {
+        "name": "Nigeria",
+        "name_uz": "Nigeriya",
+        "name_ru": "Нигерия",
+        "name_sr": "Нигерия"
+    },
+    {
+        "name": "Norway",
+        "name_uz": "Norvegiya",
+        "name_ru": "Норвегия",
+        "name_sr": "Норвегия"
+    },
+    {
+        "name": "Oman",
+        "name_uz": "Omon",
+        "name_ru": "Оман",
+        "name_sr": "Омон"
+    },
+    {
+        "name": "Pakistan",
+        "name_uz": "Pokiston",
+        "name_ru": "Пакистан",
+        "name_sr": "Покистон"
+    },
+    {
+        "name": "Palau",
+        "name_uz": "Palau",
+        "name_ru": "Палау",
+        "name_sr": "Палау"
+    },
+    {
+        "name": "Palestinian Territory, Occupied",
+        "name_uz": "Falastin",
+        "name_ru": "Палестинская территория, занятая",
+        "name_sr": "Фаластин"
+    },
+    {
+        "name": "Panama",
+        "name_uz": "Panama",
+        "name_ru": "Панама",
+        "name_sr": "Панама"
+    },
+    {
+        "name": "Paraguay",
+        "name_uz": "Paragvay",
+        "name_ru": "Парагвай",
+        "name_sr": "Парагвай"
+    },
+    {
+        "name": "Peru",
+        "name_uz": "Peru",
+        "name_ru": "Перу",
+        "name_sr": "Перу"
+    },
+    {
+        "name": "Philippines",
+        "name_uz": "Fillandiya",
+        "name_ru": "Филиппины",
+        "name_sr": "Филландия"
+    },
+    {
+        "name": "Pitcairn",
+        "name_uz": "Pitkair",
+        "name_ru": "Питкэрн",
+        "name_sr": "Питкаир"
+    },
+    {
+        "name": "Poland",
+        "name_uz": "Polsha",
+        "name_ru": "Польша",
+        "name_sr": "Полша"
+    },
+    {
+        "name": "Portugalia",
+        "name_uz": "Portugaliya",
+        "name_ru": "Португалия",
+        "name_sr": "Португалия"
+    },
+    {
+        "name": "Puerto Rico",
+        "name_uz": "Puerto Riko",
+        "name_ru": "Пуэрто-Рико",
+        "name_sr": "Пуэрто Рико"
+    },
+    {
+        "name": "Qatar",
+        "name_uz": "Qatar",
+        "name_ru": "Катар",
+        "name_sr": "Қатар"
+    },
+    {
+        "name": "Romania",
+        "name_uz": "Ruminiya",
+        "name_ru": "Румыния",
+        "name_sr": "Руминия"
+    },
+    {
+        "name": "Russian Federation",
+        "name_uz": "Rossiya",
+        "name_ru": "Российская Федерация",
+        "name_sr": "Россия"
+    },
+    {
+        "name": "Saint Lucia",
+        "name_uz": "Santa Lusiya",
+        "name_ru": "Сент-Люсия",
+        "name_sr": "Санта Лусия"
+    },
+    {
+        "name": "Samoa",
+        "name_uz": "Samoa",
+        "name_ru": "Самоа",
+        "name_sr": "Самоа"
+    },
+    {
+        "name": "San Marino",
+        "name_uz": "San Marino",
+        "name_ru": "Сан -Марино",
+        "name_sr": "Сан Марино"
+    },
+    {
+        "name": "Saudi Arabia",
+        "name_uz": "Saudiya Arabiston",
+        "name_ru": "Саудовская Аравия",
+        "name_sr": "Саудия Арабистон"
+    },
+    {
+        "name": "Senegal",
+        "name_uz": "Senegal",
+        "name_ru": "Сенегал",
+        "name_sr": "Сенегал"
+    },
+    {
+        "name": "Serbia and Montenegro",
+        "name_uz": "Serbiya",
+        "name_ru": "Сербия и Черногория",
+        "name_sr": "Сербия"
+    },
+    {
+        "name": "Singapore",
+        "name_uz": "Singapur",
+        "name_ru": "Сингапур",
+        "name_sr": "Сингапур"
+    },
+    {
+        "name": "Slovakia",
+        "name_uz": "Slovakiya",
+        "name_ru": "Словакия",
+        "name_sr": "Словакия"
+    },
+    {
+        "name": "Slovenia",
+        "name_uz": "Sloveniya",
+        "name_ru": "Словения",
+        "name_sr": "Словения"
+    },
+    {
+        "name": "Solomon Islands",
+        "name_uz": "Solomon Orollari",
+        "name_ru": "Соломоновы острова",
+        "name_sr": "Соломон Ороллари"
+    },
+    {
+        "name": "Somalia",
+        "name_uz": "Somalia",
+        "name_ru": "Сомали",
+        "name_sr": "Сомалиа"
+    },
+    {
+        "name": "South Africa",
+        "name_uz": "Janubiy Afrika",
+        "name_ru": "Южная Африка",
+        "name_sr": "Жанубий Африка"
+    },
+    {
+        "name": "Spain",
+        "name_uz": "Ispaniya",
+        "name_ru": "Испания",
+        "name_sr": "Испания"
+    },
+    {
+        "name": "Sri Lanka",
+        "name_uz": "Shri Lanka",
+        "name_ru": "Шри -Ланка",
+        "name_sr": "Шри Ланка"
+    },
+    {
+        "name": "Sudan",
+        "name_uz": "Sudan",
+        "name_ru": "Судан",
+        "name_sr": "Судан"
+    },
+    {
+        "name": "Suriname",
+        "name_uz": "Surinam",
+        "name_ru": "Суринам",
+        "name_sr": "Суринам"
+    },
+    {
+        "name": "Sweden",
+        "name_uz": "Shvetsiya",
+        "name_ru": "Швеция",
+        "name_sr": "Шветсия"
+    },
+    {
+        "name": "Switzerland",
+        "name_uz": "Shvetsariya",
+        "name_ru": "Швейцария",
+        "name_sr": "Шветсария"
+    },
+    {
+        "name": "Syrian Arab Republic",
+        "name_uz": "Suriya",
+        "name_ru": "Сирийская Арабская Республика",
+        "name_sr": "Сурия"
+    },
+    {
+        "name": "Taiwan, Province of China",
+        "name_uz": "Tayvan",
+        "name_ru": "Тайвань, провинция Китая",
+        "name_sr": "Тайван"
+    },
+    {
+        "name": "Tajikistan",
+        "name_uz": "Tojikiston",
+        "name_ru": "Таджикистан",
+        "name_sr": "Тожикистон"
+    },
+    {
+        "name": "Tanzania, United Republic of",
+        "name_uz": "Tanzaniya",
+        "name_ru": "Танзания, Объединенная Республика",
+        "name_sr": "Танзания"
+    },
+    {
+        "name": "Thailand",
+        "name_uz": "Tailand",
+        "name_ru": "Таиланд",
+        "name_sr": "Таиланд"
+    },
+    {
+        "name": "Togo",
+        "name_uz": "Togo",
+        "name_ru": "Того",
+        "name_sr": "Того"
+    },
+    {
+        "name": "Tonga",
+        "name_uz": "Tonga",
+        "name_ru": "Тонга",
+        "name_sr": "Тонга"
+    },
+    {
+        "name": "Trinidad and Tobago",
+        "name_uz": "Trinidad va Tobago",
+        "name_ru": "Тринидад и Тобаго",
+        "name_sr": "Тринидад ва Тобаго"
+    },
+    {
+        "name": "Tunisia",
+        "name_uz": "Tunis",
+        "name_ru": "Тунис",
+        "name_sr": "Тунис"
+    },
+    {
+        "name": "Turkey",
+        "name_uz": "Turkiya",
+        "name_ru": "Турция",
+        "name_sr": "Туркия"
+    },
+    {
+        "name": "Turkmenistan",
+        "name_uz": "Turkmaniston",
+        "name_ru": "Туркменистан",
+        "name_sr": "Туркманистон"
+    },
+    {
+        "name": "Tuvalu",
+        "name_uz": "Tuvalu",
+        "name_ru": "Тувалу",
+        "name_sr": "Тувалу"
+    },
+    {
+        "name": "Uganda",
+        "name_uz": "Uganda",
+        "name_ru": "Уганда",
+        "name_sr": "Уганда"
+    },
+    {
+        "name": "Ukraine",
+        "name_uz": "Ukraina",
+        "name_ru": "Украина",
+        "name_sr": "Украина"
+    },
+    {
+        "name": "United Arab Emirates",
+        "name_uz": "Birlashgan Arab Amirligi",
+        "name_ru": "Объединенные Арабские Эмираты",
+        "name_sr": "Бирлашган Араб Амирлиги"
+    },
+    {
+        "name": "United Kingdom",
+        "name_uz": "Buyuk Britaniya",
+        "name_ru": "Великобритания",
+        "name_sr": "Буюк Британия"
+    },
+    {
+        "name": "United States",
+        "name_uz": "AQSH",
+        "name_ru": "Соединенные Штаты",
+        "name_sr": "АҚШ"
+    },
+    {
+        "name": "Uruguay",
+        "name_uz": "Urugvay",
+        "name_ru": "Уругвай",
+        "name_sr": "Уругвай"
+    },
+    {
+        "name": "Uzbekistan",
+        "name_uz": "O'zbekiston",
+        "name_ru": "Узбекистан",
+        "name_sr": "Ўзбекистон"
+    },
+    {
+        "name": "Venezuela",
+        "name_uz": "Vensuela",
+        "name_ru": "Венесуэла",
+        "name_sr": "Венсуэла"
+    },
+    {
+        "name": "Viet Nam",
+        "name_uz": "Vetnam",
+        "name_ru": "Вьетнам",
+        "name_sr": "Ветнам"
+    },
+    {
+        "name": "Yemen",
+        "name_uz": "Yaman",
+        "name_ru": "Йемен",
+        "name_sr": "Яман"
+    },
+    {
+        "name": "Zambia",
+        "name_uz": "Zambiya",
+        "name_ru": "Замбия",
+        "name_sr": "Замбия"
+    },
+    {
+        "name": "Zimbabwe",
+        "name_uz": "Zimbabiya",
+        "name_ru": "Зимбабве",
+        "name_sr": "Зимбабия"
+    }
+]

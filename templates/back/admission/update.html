@@ -1,0 +1,886 @@
+{% extends 'back/_base.html' %} {% load static i18n %} {% block mainbread %}
+<ul class="nav navbar-nav bookmark-icons">
+  <div class="d-flex main-bread">
+    <h5 class="content-header-title float-left pr-1 mb-0">
+      {% trans 'Qabul' %}
+    </h5>
+    <div class="breadcrumb-wrapper">
+      <ol class="breadcrumb p-0 mb-0">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index-admin' %}"><i class="bx bx-home-alt"></i></a>
+        </li>
+          <li class="breadcrumb-item"><a href="{% url 'admission:admission-list' %}">{% trans 'Arizalar' %}</a>
+          </li>
+        <li class="breadcrumb-item active">{% trans 'Tahrirlash' %}
+        </li>
+      </ol>
+    </div>
+  </div>
+</ul>
+{% endblock %} {% block head %}
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue-ctk-date-time-picker.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue2-editor.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/katex.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/monokai-sublime.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/css/quill.snow.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/css/quill.imageUploader.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/css/main-editor.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/ui/prism.min.css' %}" />
+<link rel="stylesheet" type="text/css"
+  href="{% static 'back/app-assets/vendors/css/file-uploaders/dropzone.min.css' %}" />
+<link rel="stylesheet" type="text/css"
+  href="{% static 'back/app-assets/css/plugins/file-uploaders/dropzone.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond.min.css' %}" />
+<link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond-plugin-image-preview.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/forms/select/select2.min.css' %}" />
+{% endblock %} {% block body %} {% include 'back/parts/menu.html' %}
+<!-- BEGIN: Content-->
+<div class="app-content content" id="app">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row"></div>
+    <div class="content-body">
+      <!-- app invoice View Page -->
+
+      <form action="{% url 'admission:admission-update' object.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <section class="invoice-edit-wrapper">
+           <div class="row">
+            <!-- invoice view page -->
+            <div class="col-xl-8 col-md-8 col-12">
+              <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link active" id="uzbek-tab" data-toggle="pill" href="#application" aria-expanded="true">
+<svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31.0625 3.75H30.125V23.4375C30.125 24.9884 28.8009 26.25 27.25 26.25H18.6523C18.2651 27.3413 17.2222 28.125 16 28.125C14.7778 28.125 13.735 27.3413 13.3477 26.25H4.75C3.19913 26.25 1.875 24.9884 1.875 23.4375V3.75H0.9375C0.419312 3.75 0 4.16931 0 4.6875V27.1875C0 27.7057 0.419312 28.125 0.9375 28.125H11.4727C11.8599 29.2163 12.9028 30 14.125 30H17.875C19.0972 30 20.14 29.2163 20.5273 28.125H31.0625C31.5807 28.125 32 27.7057 32 27.1875V4.6875C32 4.16931 31.5807 3.75 31.0625 3.75Z" fill="#B7B7B7"/>
+<path d="M15.0625 23.6881V2.184C13.7649 1.09956 11.6813 0 8.5 0C7.98181 0 7.5625 0.419312 7.5625 0.9375V19.6875C7.5625 20.2057 7.98181 20.625 8.5 20.625C12.8365 20.625 14.6449 23.0236 15.0625 23.6881Z" fill="#B7B7B7"/>
+<path d="M27.25 24.375C27.7682 24.375 28.1875 23.9557 28.1875 23.4375V2.8125C28.1875 2.29431 27.7682 1.875 27.25 1.875H19.75C18.6908 1.875 17.7234 2.24156 16.9375 2.83644V25.3125C16.9375 24.7952 17.3577 24.375 17.875 24.375H27.25Z" fill="#B7B7B7"/>
+<path d="M4.75 1.875C4.23181 1.875 3.8125 2.29431 3.8125 2.8125V23.4375C3.8125 23.9557 4.23181 24.375 4.75 24.375H13.2405C12.7154 23.7386 11.3385 22.5 8.5 22.5C6.94913 22.5 5.6875 21.2384 5.6875 19.6875V1.875H4.75Z" fill="#B7B7B7"/>
+</svg>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="russian-tab" data-toggle="pill" href="#personal" aria-expanded="false">
+<svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.81666 0.550781L1.11584 6.25159H6.81666V0.550781Z" fill="#B7B7B7"/>
+<path d="M15.4087 7C15.9265 7 16.3462 6.58027 16.3462 6.0625C16.3462 5.54473 15.9265 5.125 15.4087 5.125C14.8909 5.125 14.4712 5.54473 14.4712 6.0625C14.4712 6.58027 14.8909 7 15.4087 7Z" fill="#B7B7B7"/>
+<path d="M24.6289 4.6875V24.4999C24.6289 27.0846 22.5261 29.1874 19.9414 29.1874H5.24768C5.24768 30.7382 6.50937 31.9999 8.06018 31.9999H24.6227C26.1735 31.9999 27.4352 30.7382 27.4352 29.1874V7.49988C27.4352 5.95113 26.1769 4.69094 24.6289 4.6875Z" fill="#B7B7B7"/>
+<path d="M19.9399 0H8.68994V7.1875C8.68994 7.70525 8.27019 8.125 7.75244 8.125H0.564941V24.5C0.564941 26.0508 1.82663 27.3125 3.37744 27.3125H19.9399C21.4908 27.3125 22.7524 26.0508 22.7524 24.5V2.8125C22.7524 1.26169 21.4908 0 19.9399 0ZM4.78369 11.375H9.15869C9.67644 11.375 10.0962 11.7948 10.0962 12.3125C10.0962 12.8302 9.67644 13.25 9.15869 13.25H4.78369C4.26594 13.25 3.84619 12.8302 3.84619 12.3125C3.84619 11.7948 4.26594 11.375 4.78369 11.375ZM18.5337 24.5H4.78369C4.26594 24.5 3.84619 24.0802 3.84619 23.5625C3.84619 23.0448 4.26594 22.625 4.78369 22.625H18.5337C19.0514 22.625 19.4712 23.0448 19.4712 23.5625C19.4712 24.0802 19.0514 24.5 18.5337 24.5ZM18.5337 20.75H4.78369C4.26594 20.75 3.84619 20.3302 3.84619 19.8125C3.84619 19.2948 4.26594 18.875 4.78369 18.875H18.5337C19.0514 18.875 19.4712 19.2948 19.4712 19.8125C19.4712 20.3302 19.0514 20.75 18.5337 20.75ZM18.5337 17H4.78369C4.26594 17 3.84619 16.5802 3.84619 16.0625C3.84619 15.5448 4.26594 15.125 4.78369 15.125H18.5337C19.0514 15.125 19.4712 15.5448 19.4712 16.0625C19.4712 16.5802 19.0514 17 18.5337 17ZM19.4712 12.3125C19.4712 12.8302 19.0514 13.25 18.5337 13.25H12.2837C11.7659 13.25 11.3462 12.8302 11.3462 12.3125V11.0625C11.3462 9.66781 12.0528 8.43531 13.1267 7.70344C12.7934 7.24119 12.5962 6.67462 12.5962 6.0625C12.5962 4.51169 13.8579 3.25 15.4087 3.25C16.9595 3.25 18.2212 4.51169 18.2212 6.0625C18.2212 6.67462 18.024 7.24125 17.6907 7.70344C18.7645 8.43531 19.4712 9.66781 19.4712 11.0625V12.3125Z" fill="#B7B7B7"/>
+<path d="M15.4087 8.875C14.2025 8.875 13.2212 9.85631 13.2212 11.0625V11.375H17.5962V11.0625C17.5962 9.85631 16.6149 8.875 15.4087 8.875Z" fill="#B7B7B7"/>
+</svg>
+
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="english-tab" data-toggle="pill" href="#educational" aria-expanded="false">
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<path d="M31.117 10.8586L17.17 6.57356C16.41 6.34006 15.59 6.34006 14.8305 6.57356L0.882994 10.8586C-0.294006 11.2201 -0.294006 12.7766 0.882994 13.1381L3.31449 13.8851C2.78099 14.5446 2.45299 15.3491 2.42049 16.2301C1.93899 16.5061 1.59999 17.0041 1.59999 17.5986C1.59999 18.1376 1.88399 18.5911 2.29299 18.8811L1.01649 24.6251C0.905494 25.1246 1.28549 25.5986 1.79699 25.5986H4.60249C5.11449 25.5986 5.49449 25.1246 5.38349 24.6251L4.10699 18.8811C4.51599 18.5911 4.79999 18.1376 4.79999 17.5986C4.79999 17.0201 4.47649 16.5361 4.01699 16.2551C4.05499 15.5041 4.43899 14.8401 5.05149 14.4191L14.83 17.4236C15.283 17.5626 16.152 17.7361 17.1695 17.4236L31.117 13.1386C32.2945 12.7766 32.2945 11.2206 31.117 10.8586ZM17.6395 19.5C16.213 19.938 14.9975 19.696 14.36 19.5L7.10899 17.2725L6.39999 22.9455C6.39999 24.713 10.698 26.1455 16 26.1455C21.302 26.1455 25.6 24.713 25.6 22.9455L24.891 17.272L17.6395 19.5Z" fill="#B7B7B7"/>
+</g>
+<defs>
+<clipPath id="clip0">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content main-editor">
+                <div class="tab-pane active" id="application" role="tabpanel" aria-labelledby="home-tab"
+                  aria-expanded="false">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title" style="text-transform: inherit">
+                        Choose degree and application
+                      </h4>
+                    </div>
+
+                       <div class="card-content">
+                                        <div class="card-body bolimlar">
+                                            <div class="form-group">
+                                                <label>Degree</label>
+                                                <select class="form-control ishjoyi" name="degree" required>
+                                                    <option value="">Choose a degree</option>
+                                                    {% for degree in degrees %}
+                                                        <option value="{{ degree.id }}"
+                                                        {% if object.degree == degree %}
+                                                            selected
+                                                        {% endif %} >
+                                                            {{ degree.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                       <div class="card-content">
+                                        <div class="card-body bolimlar">
+                                            <div class="form-group">
+                                                <label>Application</label>
+                                                <select class="form-control ishjoyi" name="degree" required>
+                                                    <option value="">Choose your application</option>
+                                                    {% for application in applications %}
+                                                        <option value="{{ application.id }}"
+                                                        {% if object.application == application %}
+                                                            selected
+                                                        {% endif %} >
+                                                            {{ application.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+            </div>
+                </div>
+                <div class="tab-pane" id="personal" role="tabpanel" aria-labelledby="russian-tab" aria-expanded="false">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title" style="text-transform: inherit">
+                        Personal details
+                      </h4>
+                    </div>
+                    <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-lg-12 col-md-12">
+                            <fieldset class="invoice-address form-group">
+                                <label>First name</label>
+                              <input type="text" v-model="first_name" class="form-control" required name="first_name"
+                                     placeholder="Write your first name" />
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Last name</label>
+                              <input type="text" v-model="last_name" class="form-control"
+                                     required name="last_name" placeholder="Write your last name" />
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Middle name</label>
+                              <input type="text" v-model="middle_name" class="form-control"
+                                     required name="middle_name" placeholder="Write your middle name" />
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Date of birth</label>
+                              <input type="date" v-model="date_of_birth"
+                                     class="form-control" required name="date_of_birth"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Place of birth</label>
+                              <select class="form-control" name="place_of_birth" required>
+                                                    <option value="">Choose your country of birth</option>
+                                                    {% for country in countries %}
+                                                        <option value="{{ country.id }}"
+                                                        {% if object.place_of_birth == country %}
+                                                            selected
+                                                        {% endif %} >
+                                                            {{ country.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Citizenship</label>
+                                <select class="form-control" name="citizenship" required>
+                                                    <option value="">Choose your citizenship</option>
+                                                    {% for country in countries %}
+                                                        <option value="{{ country.id }}"
+                                                        {% if object.citizenship == country %}
+                                                            selected
+                                                        {% endif %} >
+                                                            {{ country.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                              </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Nationality</label>
+                              <select class="form-control" name="nationality" required>
+                                                    <option value="">Choose your nationality</option>
+                                                    {% for nationality in nationalities %}
+                                                        <option value="{{ citizenship.id }}"
+                                                        {% if object.nationality == nationality %}
+                                                            selected
+                                                        {% endif %} >
+                                                            {{ nationality.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                       <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-lg-12 col-md-12">
+                            <fieldset class="invoice-address form-group">
+                                <label>Full address</label>
+                              <input type="text" v-model="full_address" class="form-control" required name="full_address" placeholder="Region, City/District, Street, Apartment, House/Flat/Apartment" />
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Passport series and number</label>
+                              <input type="text" v-model="passport" placeholder="AA 0000000" class="form-control" required name="passport"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label style="padding-bottom: 6px">Nationality</label>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="d-inline-block mr-2 mb-1">
+                                                <fieldset>
+                                                    <div class="radio">
+                                                        <input type="radio" value="1" name="gender" id="radio1"
+                                                         {% if object.gender == 1 %}
+                                                       checked {% endif %}>
+                                                        <label for="radio1">Male</label>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                            <li class="d-inline-block mr-2 mb-1">
+                                                <fieldset>
+                                                    <div class="radio">
+                                                        <input type="radio" name="gender" value="2" id="radio2"
+                                                         {% if object.gender == 2 %}
+                                                       checked {% endif %}>
+                                                        <label for="radio2">Female</label>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                        </ul>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                        <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Passport given data</label>
+                              <input type="date" v-model="passport_given_data" class="form-control" required name="passport_given_data"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Passport issued data</label>
+
+                              <input type="date" v-model="passport_issued_data" class="form-control" required name="passport_issued_data"/>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="card-content">
+                          <div class="card-body">
+                              <label>Copy of your Passport (pdf)</label>
+                              <div class="custom-file">
+
+                                  <input type="file"
+                                         id="input_file"
+                                         class="custom-file-input"
+                                         name="passport_copy"
+                                  accept="application/pdf">
+                                  <label class="custom-file-label" for="input_file">Upload your passport there</label>
+                                  {% if object.passport_copy %}
+                                  <a href="{{ object.passport_copy.url }}">{{ object.passport_copy.name }}</a>
+                                  {% endif %}
+                              </div>
+
+                          </div>
+                      </div>
+                      <div class="card-content">
+                          <div class="card-body">
+                              <label>Color photo with white background (size 3.5 x 4.5 sm) jpg,png</label>
+                              <div class="custom-file">
+
+                                  <input type="file"
+                                         id="input_file"
+                                         class="custom-file-input"
+                                         name="photo"
+                                  accept=".jpg, .png">
+                                  <label class="custom-file-label" for="input_file">Upload your photo there</label>
+                                  {% if object.photo %}
+                                  <a href="{{ object.photo.url }}">{{ object.photo.name }}</a>
+                                  {% endif %}
+                              </div>
+
+                          </div>
+                      </div>
+                         <div class="card-header">
+                      <h4 class="card-title" style="text-transform: inherit">
+                        Contact information
+                      </h4>
+                    </div>
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Email address</label>
+                              <input type="email" v-model="email" placeholder="example@mail.com" class="form-control" required name="email"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Valid phone number</label>
+                              <input type="text" v-model="phone_number" placeholder="+998 99 000 - 00 - 00" class="form-control" required name="phone_number"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                                  <fieldset class="invoice-address form-group">
+                                <label>Extra phone number</label>
+                              <input type="text" v-model="extra_phone_number" placeholder="+998 99 000 - 00 - 00" class="form-control" name="extra_phone_number"/>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                        <div class="card-header">
+                      <h4 class="card-title" style="text-transform: inherit">
+                        Person to notify in case of emergency situations
+                      </h4>
+                    </div>
+
+
+       <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Full name</label>
+                              <input type="text" v-model="full_name" placeholder="Enter the full name" class="form-control" required name="full_name"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                                  <fieldset class="invoice-address form-group">
+                                <label>Relation</label>
+                              <input type="text" v-model="relation" placeholder="Person’s relationship to you" class="form-control" required name="relation"/>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                             <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Occupation</label>
+                              <input type="text" v-model="occupation" placeholder="Person’s occupation" class="form-control" required name="occupation"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                                  <fieldset class="invoice-address form-group">
+                                <label>Country</label>
+                                  <select class="form-control" name="country" required>
+                                                    <option value="">Choose your country of birth</option>
+                                                    {% for country in countries %}
+                                                        <option value="{{ country.id }}"
+                                                        {% if object.country == country %}
+                                                            selected
+                                                        {% endif %} >
+                                                            {{ country.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                  </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                           <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-lg-12 col-md-12">
+                            <fieldset class="invoice-address form-group">
+                                <label>Full address</label>
+                              <input type="text" v-model="address" class="form-control" required name="address" placeholder="Region, City/District, Street, Apartment, House/Flat/Apartment" />
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Email</label>
+                              <input type="email" v-model="rel_email" placeholder="misoluchun@mail.com" class="form-control" required name="rel_email"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                                  <fieldset class="invoice-address form-group">
+                                <label>Phone number</label>
+                              <input type="text" v-model="rel_phone_number" placeholder="+998 99 000 - 00 - 00" class="form-control" name="rel_phone_number"/>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+            </div>
+                </div>
+                <div class="tab-pane" id="educational" role="tabpanel" aria-labelledby="english-tab" aria-expanded="false">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title" style="text-transform: inherit">
+                        Educational background
+                      </h4>
+                    </div>
+                    <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-lg-12 col-md-12">
+                            <fieldset class="invoice-address form-group">
+                                <label>Name of educational Institution</label>
+                              <input type="text" v-model="education_name" class="form-control" required name="education_name" placeholder="Write name of Educational Institution" />
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                       <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+
+                            <div class="col-12 col-md-6">
+                                  <fieldset class="invoice-address form-group">
+                                <label>Type of education certificate</label>
+                                  <select class="form-control" name="certificate" required>
+                                                    <option value="">Choose type of education certificate</option>
+
+                                                         <option value="1"
+                                                        {% if object.certificate == 1 %}
+                                                            selected
+                                                        {% endif %} >Certificate
+                                                            </option>
+                                                        <option value="2"
+                                                        {% if object.certificate == 2 %}
+                                                            selected
+                                                        {% endif %} >Academic lyceum diploma
+                                                            </option>
+                                       <option value="3"
+                                                        {% if object.certificate == 3 %}
+                                                            selected
+                                                        {% endif %} >Secondary specialized and vocational College diploma
+                                                            </option>
+                                                        <option value="0"
+                                                        {% if object.certificate == 0 %}
+                                                            selected
+                                                        {% endif %} >Others
+                                                            </option>
+                                                </select>
+                                  </fieldset>
+                          </div>
+                             <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Year of graduation</label>
+                              <input type="date" v-model="graduation_year" class="form-control" required name="graduation_year"/>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                       <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+  <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Document series and number</label>
+                              <input type="text" v-model="document_series_number" placeholder="AA | 12345678901" class="form-control" name="document_series_number"/>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                       <div class="card-content">
+                          <div class="card-body">
+                              <label>Copy of your diploma with transcript of records (mark sheet, grade sheet in pdf)</label>
+                              <div class="custom-file">
+                                  <input type="file"
+                                         id="input_file"
+                                         class="custom-file-input"
+                                         name="diploma"
+                                  accept="application/pdf">
+                                  <label class="custom-file-label" for="input_file">Upload your copy of diploma</label>
+                                  {% if object.diploma %}
+                                  <a href="{{ object.diploma.url }}">{{ object.diploma.name }}</a>
+                                  {% endif %}
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                            <div class="col-12 col-md-6">
+                                  <fieldset class="invoice-address form-group">
+                                <label>Foreign language qualifications</label>
+                                  <select class="form-control" name="language_qualifications" required>
+
+                                                    <option value="">Choose foreign language qualifications</option>
+
+                                                         <option value="0"
+                                                        {% if object.language_qualifications == 0 %}
+                                                            selected
+                                                        {% endif %} >English
+                                                            </option>
+                                                        <option value="1"
+                                                        {% if object.language_qualifications == 1 %}
+                                                            selected
+                                                        {% endif %} >German
+                                                            </option>
+                                       <option value="2"
+                                                        {% if object.language_qualifications == 2 %}
+                                                            selected
+                                                        {% endif %} >French
+                                                            </option>
+                                       <option value="3"
+                                                        {% if object.language_qualifications == 3 %}
+                                                            selected
+                                                        {% endif %} >Russian
+                                                            </option>
+                                       <option value="4"
+                                                        {% if object.language_qualifications == 4 %}
+                                                            selected
+                                                        {% endif %} >Others
+                                                            </option>
+
+                                                </select>
+                                  </fieldset>
+                          </div>
+                             <div class="col-12 col-md-6 mt-1 d-flex">
+                                <i style="font-size: 1.4rem" class="bx bxs-info-circle pt-1 pr-1 "></i>
+                                <p><b>Note!</b> You will have an interview in the language that you have chosen</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                       <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                    <div class="col-12">
+                            <fieldset class="invoice-address form-group">
+                                <label>Name of the higher educational institution</label>
+                              <input type="text" v-model="higher_education_name" placeholder="Write the name of your higher educational institution" class="form-control" name="higher_education_name"/>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                          <div class="col-12 col-md-6">
+                           <fieldset class="invoice-address form-group">
+                                <label>Do you have a higher education diploma?</label>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="d-inline-block mr-2 mb-1">
+                                                <fieldset>
+                                                    <div class="radio">
+                                                        <input type="radio" id="have_higher_education_yes" name="have_higher_education" value="yes"
+                                                               {% if object.have_higher_education %}
+                                                       checked {% endif %}>
+                                                        <label for="have_higher_education_yes">Yes, I do</label>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                            <li class="d-inline-block mr-2 mb-1">
+                                                <fieldset>
+                                                    <div class="radio">
+                                                        <input type="radio" name="have_higher_education" value="no" id="have_higher_education_no"
+                                                        {% if not object.have_higher_education %}
+                                                       checked {% endif %}>
+                                                        <label for="have_higher_education_no">No, I do not</label>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                        </ul>
+                            </fieldset>
+                          </div>
+                            <div class="col-12 col-md-6">
+                            <fieldset class="invoice-address form-group">
+                                <label>Do you need a dormitory?</label>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="d-inline-block mr-2 mb-1">
+                                                <fieldset>
+                                                    <div class="radio">
+                                                        <input type="radio" value="yes" name="need_dormitory" id="need_dormitory_yes"
+                                                         {% if object.need_dormitory %}
+                                                       checked {% endif %}>
+                                                        <label for="need_dormitory_yes">Yes, I do</label>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                            <li class="d-inline-block mr-2 mb-1">
+                                                <fieldset>
+                                                    <div class="radio">
+                                                        <input type="radio" value="no" name="need_dormitory" id="need_dormitory_no"
+                                                        {% if not object.need_dormitory %}
+                                                       checked {% endif %}>
+                                                        <label for="need_dormitory_no">No, I do not</label>
+                                                    </div>
+                                                </fieldset>
+                                            </li>
+                                        </ul>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                       <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                            <div class="col-12">
+                                  <fieldset class="invoice-address form-group">
+                                <label>International and national Olympiads, competitions and sports competitions</label>
+                                      <textarea placeholder="Give us information about participation in international and national Olympiads, competitions and sports competitions"
+                                                name="national_olympiads" v-model="national_olympiads" class="form-control" id="" cols="30"
+                                                rows="4"></textarea>
+                                  </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                      <div class="card-content">
+                      <div class="card-body pb-0 mx-25">
+                        <div class="row invoice-info">
+                            <div class="col-12">
+                                  <fieldset class="invoice-address form-group">
+                                <label>Do you have any disability?</label>
+                                      <textarea placeholder="If yes, please, describe your disability" name="disability" v-model="disability" class="form-control" id="" cols="30"
+                                                rows="4"></textarea>
+                                  </fieldset>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+            </div>
+                </div>
+              </div>
+            </div>
+            <!-- invoice action  -->
+            <div class="col-xl-4 col-md-4 col-12 mt-4">
+              <div class="card invoice-action-wrapper shadow-none border">
+                <div class="card-body">
+                    <fieldset>
+                                            <div class="custom-control custom-switch custom-control-inline mb-1">
+                                                <input name="status"
+                                                       type="checkbox"
+                                                       class="custom-control-input"
+                                                       {% if object.status %}
+                                                       checked {% endif %}
+                                                       id="ispublished">
+                                                <label class="custom-control-label mr-1" for="ispublished">
+                                                    <span class="switch-icon-left"><i class="bx bx-check"></i></span>
+                                                    <span class="switch-icon-right"><i class="bx bx-x"></i></span>
+                                                </label>
+                                                <span>
+                                          <label for="ispublished">
+                                            {% trans "Ko'rib chiqilgan" %}
+                                          </label></span>
+                                            </div>
+                                        </fieldset>
+                      <fieldset>
+                          <div class="custom-control custom-switch custom-control-inline mb-1">
+                              <input name="error_fill"
+                                     type="checkbox"
+                                     class="custom-control-input"
+                                     {% if object.error_fill %}
+                                     checked
+                                     {% endif %}
+                                     id="ispublished2">
+                              <label class="custom-control-label mr-1" for="ispublished2">
+                                                    <span class="switch-icon-left"><i class="bx bx-check"></i></span>
+                                                    <span class="switch-icon-right"><i class="bx bx-x"></i></span>
+                                                </label>
+                              <span>
+                                          <label for="ispublished2">
+                                            {% trans "Forma xato to'ldirilgan" %}
+                                          </label></span>
+                                            </div>
+                                        </fieldset>
+                  <div class="invoice-action-btn mb-1">
+                    <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+                      <i class="bx bxs-save"></i>
+                      <span>{% trans 'Yangilash' %}</span>
+                    </button>
+                  </div>
+                  <div class="invoice-action-btn mb-1">
+                    <div class="save">
+                      <a href="{% url 'index-admin' %}" class="btn btn-light-danger btn-block">
+                        <span class="text-nowrap">{% trans 'O‘chirish' %}</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END: Content-->
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+{% endblock %} {% block js %}
+<script src="{% static 'back/app-assets/vendors/js/filepond-plugin-image-preview.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/filepond.js' %}"></script>
+<script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+<script src="{% static 'back/app-assets/js/vue.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/vue-ctk-date-time-picker.umd.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/katex.min.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/highlight.min.js' %}"></script>
+<script src="{% static 'back/app-assets/vendors/js/quill.imageUploader.min.js' %}"></script>
+<!-- Quill JS Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+<!-- Include stylesheet -->
+<link href="https://cdn.quilljs.com/1.3.4/quill.core.css" rel="stylesheet" />
+<link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet" />
+<link href="https://cdn.quilljs.com/1.3.4/quill.bubble.css" rel="stylesheet" />
+<script src="{% static 'back/app-assets/vendors/js/vue-filepond.min.js' %}"></script>
+<!-- BEGIN: Page Vendor JS-->
+<script src="{% static 'back/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+<!-- END: Page Vendor JS-->
+<script src="{% static 'back/app-assets/js/scripts/forms/select/form-select2.min.js' %}"></script>
+
+<script type="text/javascript">
+  Vue.component("vue-ctk-date-time-picker", window["vue-ctk-date-time-picker"]);
+  Vue.use(VueQuillEditor);
+
+  var app = new Vue({
+    el: "#app",
+    components: {
+      FilePond: vueFilePond.default(FilePondPluginImagePreview),
+    },
+
+    data: {
+      first_name: "{{ object.first_name|safe|escapejs }}",
+      last_name: "{{ object.last_name|safe|escapejs }}",
+      middle_name: "{{ object.middle_name|safe|escapejs }}",
+      date_of_birth: "{{ object.date_of_birth|safe|escapejs }}",
+      citizenship: "{{ object.citizenship|safe|escapejs }}",
+      full_address: "{{ object.full_address|safe|escapejs }}",
+      passport: "{{ object.passport|safe|escapejs }}",
+      passport_given_data: "{{ object.passport_given_data|safe|escapejs }}",
+      passport_issued_data: "{{ object.passport_issued_data|safe|escapejs }}",
+      email: "{{ object.email|safe|escapejs }}",
+      phone_number: "{{ object.phone_number|safe|escapejs }}",
+      extra_phone_number: "{{ object.extra_phone_number|safe|escapejs }}",
+      full_name: "{{ object.full_name|safe|escapejs }}",
+      relation: "{{ object.relation|safe|escapejs }}",
+      occupation: "{{ object.occupation|safe|escapejs }}",
+      address: "{{ object.address|safe|escapejs }}",
+      rel_email: "{{ object.rel_email|safe|escapejs }}",
+      rel_phone_number: "{{ object.rel_phone_number|safe|escapejs }}",
+      education_name: "{{ object.education_name|safe|escapejs }}",
+      graduation_year: "{{ object.graduation_year|safe|escapejs }}",
+      document_series_number: "{{ object.document_series_number|safe|escapejs }}",
+      higher_education_name: "{{ object.higher_education_name|safe|escapejs }}",
+      national_olympiads: "{{ object.national_olympiads|safe|escapejs }}",
+      disability: "{{ object.disability|safe|escapejs }}",
+
+
+      message: "Hello!",
+      value: null,
+      myFiles: null,
+      videotrue: false,
+      editorOption: {
+        theme: "snow",
+      },
+    },
+    methods: {
+      handleFilePondInit: function () {
+        console.log("FilePond has initialized");
+        this.$refs.pond.getFiles();
+      },
+      onEditorBlur(quill) {
+        console.log("editor blur!", quill);
+      },
+      onEditorFocus(quill) {
+        console.log("editor focus!", quill);
+      },
+      onEditorReady(quill) {
+        console.log("editor ready!", quill);
+      },
+    },
+    computed: {
+      editor() {
+        return this.$refs.quillEditor.quill;
+      },
+      stringit() {
+        return (args) => {
+          return JSON.stringify(args);
+        };
+      },
+    },
+  });
+</script>
+
+{% endblock %}

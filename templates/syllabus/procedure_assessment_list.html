@@ -1,0 +1,25 @@
+<table class="procedure_assessment">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+            <tr>
+                <td>{{ object.rating_assessment }}</td>
+                <td>{{ object.max_ball }}</td>
+                <td>{{ object.task_to_be_completed }}</td>
+                <td>{{ object.task_completion_time }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>{{ total.name }}: </td>
+                <td>{{ total.max_ball }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+</table>
