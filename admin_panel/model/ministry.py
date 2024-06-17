@@ -39,17 +39,17 @@ class Statistic(models.Model):
     @property
     def icon_url(self):
         if self.icon:
-            return "%s%s" % (settings.HOST, self.icon.url)
+            return "%s%s" % (settings.HOST[:4], self.icon.url)
 
     @property
     def blue_icon_url(self):
         if self.blue_icon:
-            return "%s%s" % (settings.HOST, self.blue_icon.url)
+            return "%s%s" % (settings.HOST[:4], self.blue_icon.url)
 
     @property
     def image_url(self):
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "%s%s" % (settings.HOST[:4], self.image.url)
 
     @property
     def icon_name(self):

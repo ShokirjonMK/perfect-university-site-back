@@ -24,6 +24,7 @@ class RectorCongratulationView(viewsets.ModelViewSet):
 
 
 
+
 class StatisticView(viewsets.ModelViewSet):
     queryset = ministry.Statistic.objects.all()
     serializer_class = serializers.StatisticSerializer

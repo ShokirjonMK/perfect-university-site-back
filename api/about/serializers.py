@@ -319,17 +319,17 @@ class CampImageSerializer(serializers.RelatedField):
 
 
 class StatisticSerializer(serializers.ModelSerializer):
-    # image_url = ThumbnailImageSerializer(source="image", read_only=True)
+    image_url = ThumbnailImageSerializer(source="image", read_only=True)
 
     class Meta:
         model = ministry.Statistic
-        fields = ("title", "icon", "blue_icon", "content", "why_tsue", "image", "link")
+        fields = ("title", "icon_url", "blue_icon_url", "content", "why_tsue", "image_url", "link")
 
 
 class StatisticItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ministry.StatisticItem
-        fields = ("id", "title", "number", "image", "blue_image", "order")
+        fields = ("id", "title", "number", "icon_url", "blue_icon_url", "order")
 
 
 class StatisticContentItemSerializer(serializers.ModelSerializer):
