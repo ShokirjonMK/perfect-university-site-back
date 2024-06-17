@@ -319,7 +319,7 @@ class CampImageSerializer(serializers.RelatedField):
 
 
 class StatisticSerializer(serializers.ModelSerializer):
-    image_url = ThumbnailImageSerializer(source="image", read_only=True)
+    # image_url = ThumbnailImageSerializer(source="image", read_only=True)
 
     class Meta:
         model = ministry.Statistic
