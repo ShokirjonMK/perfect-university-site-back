@@ -34,7 +34,7 @@ DEBUG = env.bool("DEBUG", default=True)
 
 STAGE = env.str("STAGE", "development")
 
-ALLOWED_HOSTS = ["moiti.uz", "api.moiti.uz", "localhost", "127.0.0.1", '*']
+ALLOWED_HOSTS = ["moiti.uz", "api.moiti.uz", "localhost", "127.0.0.1", 'api.tpu.uz']
 
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 #
