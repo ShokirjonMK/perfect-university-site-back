@@ -323,13 +323,13 @@ class StatisticSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ministry.Statistic
-        fields = ("title", "icon_url", "blue_icon_url", "content", "why_tsue", "image_url", "link")
+        fields = ("title", "icon", "blue_icon", "content", "why_tsue", "image", "link")
 
 
 class StatisticItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ministry.StatisticItem
-        fields = ("id", "title", "number", "icon_url", "blue_icon_url", "order")
+        fields = ("id", "title", "number", "image", "blue_image", "order")
 
 
 class StatisticContentItemSerializer(serializers.ModelSerializer):
