@@ -39,17 +39,17 @@ class Statistic(models.Model):
     @property
     def icon_url(self):
         if self.icon:
-            return "http://api.tpu.uz%s" % (settings.HOST[:4], self.icon.url)
+            return "http://api.tpu.uz%s" % self.icon.url
 
     @property
     def blue_icon_url(self):
         if self.blue_icon:
-            return "http://api.tpu.uz%s" % (settings.HOST[:4], self.blue_icon.url)
+            return "http://api.tpu.uz%s" % self.blue_icon.url
 
     @property
     def image_url(self):
         if self.image:
-            return "http://api.tpu.uz%s" % (settings.HOST[:4], self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
 
     @property
     def icon_name(self):
@@ -88,12 +88,12 @@ class StatisticItem(models.Model):
     @property
     def icon_url(self):
         if self.image:
-            return "http://api.tpu.uz%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
 
     @property
     def blue_icon_url(self):
         if self.blue_image:
-            return "http://api.tpu.uz%s" % (settings.HOST, self.blue_image.url)
+            return "http://api.tpu.uz%s" % self.blue_image.url
 
     @property
     def image_name(self):
