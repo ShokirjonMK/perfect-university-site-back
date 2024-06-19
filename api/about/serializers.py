@@ -4,9 +4,10 @@ from admin_panel.model import ministry, settings
 from api.serializers import ThumbnailImageSerializer
 
 
-class RectorCongratulationSerializer(serializers.ModelSerializer):
-    image_url = ThumbnailImageSerializer(source="image", read_only=True)
 
+class RectorCongratulationSerializer(serializers.ModelSerializer):
+    # image_url = ThumbnailImageSerializer(source="image", read_only=True)
+    image_url = serializers.SerializerMethodField()
     class Meta:
         model = ministry.RectorCongratulation
         fields = [
@@ -19,6 +20,9 @@ class RectorCongratulationSerializer(serializers.ModelSerializer):
             "facebook",
             "linkedin",
         ]
+    
+    def get_image_url(self, obj):
+        return obj.image_url
 
 
 class AboutUsSerializer(serializers.ModelSerializer):
