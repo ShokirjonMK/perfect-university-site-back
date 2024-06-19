@@ -27,10 +27,14 @@ class NewsCategorySerializer(serializers.ModelSerializer):
 
 class GallerySerializer(serializers.ModelSerializer):
     # image_url = ThumbnailImageSerializer(source="image", read_only=True)
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = press_service.Gallery
         fields = ("id", "image_url")
+
+    def get_image_url(self, obj):
+        return obj.image_url
 
 
 class ObjectiveShortSerializer(serializers.ModelSerializer):
