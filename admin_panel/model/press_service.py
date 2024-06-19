@@ -152,15 +152,16 @@ class News(NewsProxy):
         super(News, self).save(*args, **kwargs)
 
 
+
 class Gallery(models.Model):
     news = models.ForeignKey("News", on_delete=models.CASCADE, related_name="images")
     image = ResizedImageField(size=IMAGE, upload_to="news_gallery/")
 
     @property
     def image_url(self):
-        # "Returns the image url."
-        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
-        # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
+        if self.image:
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
     class Meta:
         db_table = "gallery"
