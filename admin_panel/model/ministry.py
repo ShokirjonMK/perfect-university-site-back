@@ -191,7 +191,8 @@ class FamousGraduate(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url)
+        return "http://api.tpu.uz%s" % self.image.url
+        # return "%s%s" % (settings.HOST, self.image.url)
 
     def save(self, *args, **kwargs):
         if self.title_uz:
@@ -226,7 +227,8 @@ class FamousGraduateGallery(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url)
+        return "http://api.tpu.uz%s" % self.image.url
+        # return "%s%s" % (settings.HOST, self.image.url)
 
 
 class AboutMinistry(models.Model):
@@ -248,22 +250,32 @@ class AboutMinistry(models.Model):
     def image_urls(self):
         urls = []
         if self.image1:
-            urls.append("%s%s" % (settings.HOST, self.image1.url))
+            urls.append("http://api.tpu.uz%s" % self.image1.url)
         if self.image2:
-            urls.append("%s%s" % (settings.HOST, self.image2.url))
+            urls.append("http://api.tpu.uz%s" % self.image2.url)
         if self.image3:
-            urls.append("%s%s" % (settings.HOST, self.image3.url))
+            urls.append("http://api.tpu.uz%s" % self.image.url3)
         return urls
+
+        # if self.image1:
+        #     urls.append("%s%s" % (settings.HOST, self.image1.url))
+        # if self.image2:
+        #     urls.append("%s%s" % (settings.HOST, self.image2.url))
+        # if self.image3:
+        #     urls.append("%s%s" % (settings.HOST, self.image3.url))
+        # return urls
 
     @property
     def logo_url(self):
         if self.logo:
-            return "%s%s" % (settings.HOST, self.logo.url)
+            return "http://api.tpu.uz%s" % self.logo.url
+            # return "%s%s" % (settings.HOST, self.logo.url)
 
     @property
     def director_logo_url(self):
         if self.director_logo:
-            return "%s%s" % (settings.HOST, self.director_logo.url)
+            return "http://api.tpu.uz%s" % self.director_logo.url
+            # return "%s%s" % (settings.HOST, self.director_logo.url)
 
     def save(self, *args, **kwargs):
         if self.title_uz:
@@ -365,7 +377,8 @@ class Department(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
+        # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
     @property
     def type(self):
@@ -499,7 +512,8 @@ class Staff(models.Model):
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return ""
 
     def save(self, *args, **kwargs):
@@ -575,7 +589,8 @@ class Organization(models.Model):
     def reg_image_url(self):
         # "Returns the image url."
         if self.reg_image:
-            return "%s%s" % (settings.HOST, self.reg_image.url)
+            return "http://api.tpu.uz%s" % self.reg_image.url
+            # return "%s%s" % (settings.HOST, self..url)
         return ""
 
     def __str__(self):
@@ -631,7 +646,8 @@ class StudyProgram(models.Model):
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return ""
 
     def save(self, *args, **kwargs):
@@ -706,7 +722,8 @@ class CouncilStaff(models.Model):
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return ""
 
     def save(self, *args, **kwargs):
@@ -738,7 +755,8 @@ class Council(models.Model):
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return ""
 
     def save(self, *args, **kwargs):
@@ -794,7 +812,8 @@ class RectorCongratulation(models.Model):
     @property
     def rector_image(self):
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return None
 
     @property
@@ -830,5 +849,6 @@ class UnversityFile(models.Model):
     @property
     def file_url(self):
         if self.file:
-            return "%s%s" % (settings.HOST, self.file.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.file.url)
         return None

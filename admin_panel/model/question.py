@@ -101,5 +101,6 @@ class Application(models.Model):
     def file_url(self):
         # "Returns the image url."
         if self.file:
-            return "%s%s" % (settings.HOST, self.file.url)
+            return "http://api.tpu.uz%s" % self.file.url
+            # return "%s%s" % (settings.HOST, self.file.url)
         return None

@@ -55,12 +55,14 @@ class NewsProxy(models.Model):
     @property
     def thumbnail_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.thumbnail.url) if self.thumbnail else ""
+        return "http://api.tpu.uz%s" % self.thumbnail.url if self.thumbnail else ""
+        # return "%s%s" % (settings.HOST, self.thumbnail.url) if self.thumbnail else ""
 
     @property
     def image_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
+        # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
 
 class NewsHashtagProxy(models.Model):
@@ -157,7 +159,8 @@ class Gallery(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
+        # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
     class Meta:
         db_table = "gallery"
@@ -221,7 +224,8 @@ class PhotoGallery(models.Model):
     @property
     def thumbnail_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.thumbnail.url)
+        return "http://api.tpu.uz%s" % self.thumbnail.url
+        # return "%s%s" % (settings.HOST, self.thumbnail.url)
 
     def save(self, *args, **kwargs):
         if self.title_uz:
@@ -243,7 +247,8 @@ class PhotoGalleryImage(models.Model):
     @property
     def url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url)
+        return "http://api.tpu.uz%s" % self.image.url
+        # return "%s%s" % (settings.HOST, self.image.url)
 
 
 class VideoGallery(models.Model):
@@ -268,7 +273,8 @@ class VideoGallery(models.Model):
     @property
     def thumb(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.thumbnail.url)
+        return "http://api.tpu.uz%s" % self.thumbnail.url
+        # return "%s%s" % (settings.HOST, self.thumbnail.url)
 
     def save(self, *args, **kwargs):
         if self.title_uz:
@@ -300,7 +306,8 @@ class Vebinar(models.Model):
     @property
     def thumb(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.thumbnail.url)
+        return "http://api.tpu.uz%s" % self.thumbnail.url
+        # return "%s%s" % (settings.HOST, self.thumbnail.url)
 
     def clean(self):
         regex = r"(?:https:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be){1}\/(?:watch\?v=)?(.+)"

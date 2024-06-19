@@ -34,14 +34,16 @@ class Articles(models.Model):
     def file_url(self):
         # "Returns the image url."
         if self.file:
-            return "%s%s" % (settings.HOST, self.file.url)
+            return "http://api.tpu.uz%s" % file.url
+            # return "%s%s" % (settings.HOST, self.file.url)
         return ""
 
     @property
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return ""
 
     def save(self, *args, **kwargs):
@@ -70,7 +72,8 @@ class ArticlesFiles(models.Model):
     def file_url(self):
         # "Returns the image url."
         if self.file:
-            return "%s%s" % (settings.HOST, self.file.url)
+            return "http://api.tpu.uz%s" % self.fileicon.url
+            # return "%s%s" % (settings.HOST, self.file.url)
         return ""
 
 
@@ -112,7 +115,8 @@ class OpenDataFiles(models.Model):
     def file_url(self):
         # "Returns the image url."
         if self.file:
-            return "%s%s" % (settings.HOST, self.file.url)
+            return "http://api.tpu.uz%s" % self.file.url
+            # return "%s%s" % (settings.HOST, self.file.url)
         return ""
 
     @property

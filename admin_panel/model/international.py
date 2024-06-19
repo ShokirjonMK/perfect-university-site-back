@@ -66,7 +66,8 @@ class GrantFiles(models.Model):
     def file_url(self):
         # "Returns the image url."
         if self.file:
-            return "%s%s" % (settings.HOST, self.file.url)
+            return "http://api.tpu.uz%s" % self.file.url
+            # return "%s%s" % (settings.HOST, self.file.url)
         return None
 
     @property
@@ -103,7 +104,8 @@ class InternationalConferencePage(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
+        # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
     def save(self, *args, **kwargs):
         if self.title_uz:
@@ -129,7 +131,8 @@ class ExternalSection(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
+        # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
     def save(self, *args, **kwargs):
         if self.title_uz:
@@ -198,7 +201,8 @@ class InternationalRelation(models.Model):
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return None
 
     def save(self, *args, **kwargs):
@@ -222,7 +226,8 @@ class InternationalStaff(models.Model):
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return None
 
     @property
@@ -261,7 +266,8 @@ class InternationalPartnerPage(models.Model):
     def image_url(self):
         if self.image:
             # "Returns the image url."
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return None
 
     def __str__(self):
@@ -293,7 +299,8 @@ class InternationalPartner(models.Model):
     def image_url(self):
         if self.image:
             # "Returns the image url."
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return None
 
 
@@ -361,7 +368,8 @@ class InternationalCooperation(models.Model):
     def image_url(self):
         if self.image:
             # "Returns the image url."
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self.image.url)
         return None
 
     def save(self, *args, **kwargs):

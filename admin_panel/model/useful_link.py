@@ -24,7 +24,8 @@ class UsefulLink(models.Model):
     @property
     def icon_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.icon.url)
+        return "http://api.tpu.uz%s" % self.icon.url
+        # return "%s%s" % (settings.HOST, self.icon.url)
 
     # def save(self, *args, **kwargs):
     #     if self.title_uz:

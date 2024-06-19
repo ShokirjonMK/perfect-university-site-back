@@ -26,7 +26,8 @@ class ScientificJournal(BaseModel):
     @property
     def image_url(self):
         # "Returns the image url."
-        return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
+        # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
     @property
     def get_image(self):

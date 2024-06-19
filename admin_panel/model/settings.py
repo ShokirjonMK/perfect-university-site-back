@@ -68,22 +68,26 @@ class MainPageSetting(models.Model):
     @property
     def poster_url(self):
         if self.poster:
-            return '%s%s' % (settings.HOST, self.poster.url)
+            return "http://api.tpu.uz%s" % self.poster.url
+            # return '%s%s' % (settings.HOST, self.poster.url)
 
     @property
     def logo_url(self):
         if self.logo:
-            return '%s%s' % (settings.HOST, self.logo.url)
+            return "http://api.tpu.uz%s" % self.logo.url
+            # return '%s%s' % (settings.HOST, self.logo.url)
 
     @property
     def logo_white_url(self):
         if self.logo_white:
-            return '%s%s' % (settings.HOST, self.logo_white.url)
+            return "http://api.tpu.uz%s" % self.logo_white.url
+            # return '%s%s' % (settings.HOST, self.logo_white.url)
 
     @property
     def banner_url(self):
         if self.banner:
-            return '%s%s' % (settings.HOST, self.banner.url)
+            return "http://api.tpu.uz%s" % self.banner.url
+            # return '%s%s' % (settings.HOST, self.banner.url)
 
     def save(self, *args, **kwargs):
         if self.title_uz:
@@ -136,7 +140,8 @@ class Slider(models.Model):
     @property
     def image_url(self):
         if self.image:
-            return '%s%s' % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return '%s%s' % (settings.HOST, self.image.url)
 
     @property
     def image_name_uz(self):
@@ -195,7 +200,8 @@ class MediaImage(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
-        return '%s%s' % (settings.HOST, self.image.url) if self.image else ""
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
+        # return '%s%s' % (settings.HOST, self.image.url) if self.image else ""
 
 
 SIDEBAR_IMAGE = [279, 287]
@@ -221,7 +227,8 @@ class Sidebar(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
-        return '%s%s' % (settings.HOST, self.image.url) if self.image else ""
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
+        # return '%s%s' % (settings.HOST, self.image.url) if self.image else ""
 
     def __str__(self):
         return self.title

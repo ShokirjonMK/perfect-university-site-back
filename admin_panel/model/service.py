@@ -28,13 +28,15 @@ class Service(models.Model):
     def icon_url(self):
         if self.icon:
             # "Returns the image url."
-            return "%s%s" % (settings.HOST, self.icon.url)
+            return "http://api.tpu.uz%s" % self.icon.url
+            # return "%s%s" % (settings.HOST, self.icon.url)
 
     @property
     def white_icon_url(self):
         # "Returns the image url."
         if self.main_icon:
-            return "%s%s" % (settings.HOST, self.main_icon.url)
+            return "http://api.tpu.uz%s" % self.main_icon.url
+            # return "%s%s" % (settings.HOST, self.main_icon.url)
 
     def save(self, *args, **kwargs):
         if self.title_uz:

@@ -234,6 +234,7 @@ class MediaImage(models.Model):
     @property
     def image_url(self):
         # "Returns the image url."
+        return "http://api.tpu.uz%s" % self.image.url if self.image else ""
         return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
 

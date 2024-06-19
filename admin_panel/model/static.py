@@ -60,7 +60,8 @@ class StaticPage(models.Model):
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return '%s%s' % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return '%s%s' % (settings.HOST, self.image.url)
         return None
 
     def save(self, *args, **kwargs):
@@ -101,7 +102,8 @@ class StaticPageImage(models.Model):
     @property
     def url(self):
         # "Returns the image url."
-        return '%s%s' % (settings.HOST, self.image.url)
+        return "http://api.tpu.uz%s" % self.image.url
+        # return '%s%s' % (settings.HOST, self.image.url)
 
 
 class StudentStaticPages(models.Model):
@@ -148,7 +150,8 @@ class StudentStaticPagesImage(models.Model):
     @property
     def url(self):
         # "Returns the image url."
-        return '%s%s' % (settings.HOST, self.image.url)
+        return "http://api.tpu.uz%s" % self.image.url
+        # return '%s%s' % (settings.HOST, self.image.url)
 
 class OurMission(models.Model):
     title = models.CharField(verbose_name="Title", max_length=255, null=True)

@@ -26,5 +26,6 @@ class ExternalImage(models.Model):
     def image_url(self):
         # "Returns the image url."
         if self.image:
-            return "%s%s" % (settings.HOST, self.image.url)
+            return "http://api.tpu.uz%s" % self.image.url
+            # return "%s%s" % (settings.HOST, self..url)
         return ""
