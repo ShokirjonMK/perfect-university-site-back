@@ -166,6 +166,7 @@ class Gallery(models.Model):
 
 
 
+
 class NewsHashtag(NewsHashtagProxy):
     class Meta:
         db_table = "news_hashtags"
@@ -187,6 +188,7 @@ class NewsCategory(NewsCategoryProxy):
 
     class Meta:
         db_table = "news_categories"
+        
         ordering = ("order",)
 
     def save(self, *args, **kwargs):
