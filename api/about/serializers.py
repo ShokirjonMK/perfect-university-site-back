@@ -22,7 +22,7 @@ class RectorCongratulationSerializer(serializers.ModelSerializer):
         ]
     
     def get_image_url(self, obj):
-        return obj.image_url
+        return obj.rector_image
 
 
 class AboutUsSerializer(serializers.ModelSerializer):
