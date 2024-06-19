@@ -160,7 +160,6 @@ class Gallery(models.Model):
     def image_url(self):
         if self.image:
             return "http://api.tpu.uz%s" % self.image
-            # return "%s%s" % (settings.HOST, self.image.url) if self.image else ""
 
     class Meta:
         db_table = "gallery"
