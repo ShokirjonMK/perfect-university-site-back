@@ -154,7 +154,7 @@ class News(NewsProxy):
 
 class Gallery(models.Model):
     news = models.ForeignKey("News", on_delete=models.CASCADE, related_name="images")
-    image = ResizedImageField(size=IMAGE, upload_to="news_gallery/")
+    image = models.ImageField(upload_to="news_gallery/")
 
     @property
     def image_url(self):
