@@ -159,10 +159,11 @@ class Gallery(models.Model):
     @property
     def image_url(self):
         if self.image:
-            return "http://api.tpu.uz%s" % self.image
+            return "http://api.tpu.uz%s" % self.image.url
 
     class Meta:
         db_table = "gallery"
+
 
 
 class NewsHashtag(NewsHashtagProxy):
